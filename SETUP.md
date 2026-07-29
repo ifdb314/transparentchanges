@@ -1,108 +1,88 @@
 # Setup checklist
 
-Everything in this repo is built and wired up. What's left is account-level setup that
-only you can do — creating accounts, generating keys, and connecting them together.
-Follow this in order; each section says exactly what to click.
+**Status: live.** The site is deployed and working at `https://transparentchanges.com`,
+hosted on Cloudflare Workers, backed by Supabase. This doc reflects what's actually
+running, plus what to do for the remaining optional pieces (analytics, ads).
 
-## 1. Supabase (the database)
+## Done already
 
-1. Go to [supabase.com](https://supabase.com) → sign up (free tier is plenty to start) →
-   **New Project**. Pick any name/region, set a database password (save it somewhere —
-   you won't need it day-to-day, but you'll want it if you ever connect a SQL client).
-2. Once the project finishes provisioning, go to **SQL Editor** → **New query**.
-3. Open `supabase/schema.sql` in this repo, paste its entire contents into the editor,
-   and click **Run**. This creates three tables: `founding_circle_entries`,
-   `industry_suggestions`, and `ventures` (pre-seeded with the 5 launch ventures).
-4. Go to **Project Settings → API**. You need two values from this page:
-   - **Project URL** → this is `SUPABASE_URL`
-   - **service_role** key (under "Project API keys" — click "reveal") → this is
-     `SUPABASE_SERVICE_ROLE_KEY`
+1. **Supabase** — project created, `supabase/schema.sql` run, creating
+   `founding_circle_entries`, `industry_suggestions`, and `ventures` (pre-seeded with the
+   5 launch ventures).
+2. **GitHub** — code lives at `github.com/ifdb314/transparentchanges`.
+3. **Cloudflare Workers** — the app is deployed as a Worker named `transparentchanges`,
+   using the [OpenNext Cloudflare adapter](https://opennext.js.org/cloudflare) (not
+   Vercel — Vercel hit an unresolved platform-side routing bug during setup, documented
+   in the original conversation, so we moved to Cloudflare instead).
+4. **Domain** — `transparentchanges.com` and `www.transparentchanges.com` are both bound
+   to the Worker as custom domains, nameservers pointed at Cloudflare, SSL live.
+5. **Secrets** — `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_USER`,
+   `ADMIN_PASSWORD` are all set as encrypted Worker secrets (`wrangler secret put`, not
+   in any file that's committed to git).
+6. **Admin login** — `/admin` is protected by a real login form + signed session cookie
+   (`app/admin/login/`, `lib/adminAuth.ts`), not HTTP Basic Auth. Cloudflare doesn't
+   support the Node.js-runtime middleware Vercel would have used for Basic Auth, so this
+   is the replacement — same `ADMIN_USER`/`ADMIN_PASSWORD` secrets, just a proper page
+   instead of a browser popup.
 
-   The service_role key bypasses your database's row-level security — never put it in
-   client-side code or commit it to git. It's only ever read on the server (see
-   `lib/supabase.ts`), which is exactly why we're using it here.
+## How to redeploy after future code changes
 
-## 2. Push this repo to GitHub
-
-If this project isn't already in your existing GitHub repo:
+There's no auto-deploy-on-push yet (that requires connecting the repo under **Workers &
+Pages → transparentchanges → Settings → Builds** in the Cloudflare dashboard, if you
+want to set it up later). Until then, redeploying is one command:
 
 ```bash
 cd transparentchanges-app
-git remote add origin https://github.com/<your-username>/<your-repo>.git
-git branch -M main
-git push -u origin main
+npm run cf:deploy
 ```
 
-If you already have a repo, copy this project's files into it, commit, and push as you
-normally would.
+This rebuilds the Next.js app and pushes the new Worker version live in one step. Your
+secrets stay put — you only need `wrangler secret put NAME` again if a value actually
+changes.
 
-## 3. Vercel (hosting)
+## View your data
 
-1. Go to [vercel.com](https://vercel.com) → sign in with your GitHub account →
-   **Add New… → Project** → import the repo you just pushed.
-2. Vercel auto-detects Next.js — leave the build settings as default.
-3. Before clicking Deploy, open **Environment Variables** and add:
+Go to `https://transparentchanges.com/admin` and log in with your `ADMIN_USER` /
+`ADMIN_PASSWORD`. You'll see every Founding Circle pledge, every industry suggestion,
+and current venture vote counts, live from Supabase.
 
-   | Name | Value |
-   |---|---|
-   | `SUPABASE_URL` | from step 1 |
-   | `SUPABASE_SERVICE_ROLE_KEY` | from step 1 |
-   | `ADMIN_USER` | pick a username, e.g. `justin` |
-   | `ADMIN_PASSWORD` | pick a long random password (this gates `/admin`) |
-   | `NEXT_PUBLIC_SITE_URL` | `https://yourdomain.com` (your real domain, step 4) |
-
-   Leave the analytics/ads variables blank for now — step 6 covers those.
-4. Click **Deploy**. In a minute or two you'll have a live `*.vercel.app` URL.
-
-## 4. Connect your existing domain
-
-1. In the Vercel project → **Settings → Domains** → add your domain.
-2. Vercel will show you a DNS record to add (usually an `A` record pointing at
-   `76.76.21.21`, or a `CNAME` for a subdomain). Add that record wherever your domain is
-   registered (Namecheap, GoDaddy, Google Domains, Cloudflare, etc.).
-3. DNS can take a few minutes to a few hours to propagate. Vercel's dashboard will show
-   a green checkmark once it's live, and issues a free SSL certificate automatically.
-
-## 5. View your data
-
-Once deployed, go to `https://yourdomain.com/admin` and log in with the `ADMIN_USER` /
-`ADMIN_PASSWORD` you set in step 3 (your browser will show a standard login prompt —
-that's HTTP Basic Auth, not a custom login page). You'll see every Founding Circle
-pledge, every industry suggestion, and current venture vote counts, live from Supabase.
-
-## 6. Google Analytics 4 (visits, visitors, page tracking)
+## Google Analytics 4 (visits, visitors, page tracking)
 
 1. Go to [analytics.google.com](https://analytics.google.com) → **Admin → Create
    Property**. Name it, set your timezone/currency, and create a **Web** data stream
-   for your domain.
+   for `transparentchanges.com`.
 2. Copy the **Measurement ID** shown (looks like `G-XXXXXXXXXX`).
-3. In Vercel → **Settings → Environment Variables**, add `NEXT_PUBLIC_GA_ID` with that
-   value, then redeploy (**Deployments → ⋯ → Redeploy** on the latest one).
-4. Traffic, visits, and visitor data live in the Google Analytics dashboard itself
-   (analytics.google.com) — not in `/admin`. That's the right specialized tool for that
-   job; `/admin` is specifically for your Founding Circle data.
+3. Set it as a Worker secret and redeploy:
+   ```bash
+   printf '%s' 'G-XXXXXXXXXX' | npx wrangler secret put NEXT_PUBLIC_GA_ID
+   npm run cf:deploy
+   ```
+   Note: since this is a `NEXT_PUBLIC_` variable, it actually needs to be present in
+   `.env.local` (or `.env.production`) *at build time* for it to reach the browser — a
+   Worker secret alone won't do it, because `NEXT_PUBLIC_` values get baked into the
+   client bundle during `next build`, not read at request time. Add the same value to
+   `.env.local` before running `npm run cf:deploy`.
+4. Traffic, visits, and visitor data live in the Google Analytics dashboard itself — not
+   in `/admin`, which is specifically for your Founding Circle data.
 
-## 7. Google Ads conversion tracking
+## Google Ads conversion tracking
 
-1. Go to [ads.google.com](https://ads.google.com) → create an account if you don't have
-   one → **Tools & Settings → Conversions → New conversion action → Website**.
-2. Name it something like "Founding Circle pledge," set the value/category however you
-   like, and save. Google will show you a **Conversion ID** (`AW-XXXXXXXXX`) and a
-   **Conversion Label**.
-3. In Vercel, add:
-   - `NEXT_PUBLIC_GOOGLE_ADS_ID` = the `AW-XXXXXXXXX` value
-   - `NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL` = `AW-XXXXXXXXX/AbC-D_efG-h12` (the full
-     send_to string Google shows you)
-4. Redeploy. Every successful Founding Circle pledge now fires this conversion
-   automatically (see `components/Analytics.tsx` → `trackFoundingCirclePledge`).
+1. Go to [ads.google.com](https://ads.google.com) → **Tools & Settings → Conversions →
+   New conversion action → Website**. Name it something like "Founding Circle pledge."
+2. Google shows you a **Conversion ID** (`AW-XXXXXXXXX`) and a **Conversion Label**.
+3. Add both to `.env.local` as `NEXT_PUBLIC_GOOGLE_ADS_ID` and
+   `NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL` (same build-time caveat as GA4 above), then
+   `npm run cf:deploy`.
+4. Every successful Founding Circle pledge now fires this conversion automatically (see
+   `components/Analytics.tsx` → `trackFoundingCirclePledge`).
 
-## 8. Meta Pixel (Facebook & Instagram Ads)
+## Meta Pixel (Facebook & Instagram Ads)
 
 1. Go to [business.facebook.com](https://business.facebook.com) → **Events Manager →
    Connect Data Sources → Web → Meta Pixel** → create one, name it, enter your domain.
-2. Copy the **Pixel ID** (a long number).
-3. In Vercel, add `NEXT_PUBLIC_META_PIXEL_ID` with that value, and redeploy.
-4. The pixel fires `PageView` on every page automatically, and a `Lead` event on every
+2. Copy the **Pixel ID**, add it to `.env.local` as `NEXT_PUBLIC_META_PIXEL_ID`, then
+   `npm run cf:deploy`.
+3. The pixel fires `PageView` on every page automatically, and a `Lead` event on every
    successful Founding Circle pledge.
 
 ## Known limitations, on purpose
@@ -119,3 +99,5 @@ This was built to be lightweight, per your request — a few honest tradeoffs:
   the database with no follow-up. Worth adding once you're ready to actually communicate
   with your Founding Circle (Supabase has a built-in way to trigger emails via Edge
   Functions, or you could bolt on something like Resend).
+- **No auto-deploy on push** — see "How to redeploy" above. Connecting Git in the
+  Cloudflare dashboard would close this gap if it's worth it to you.
