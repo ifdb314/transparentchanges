@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import { supabaseAdmin } from "@/lib/supabase";
+import { ADMIN_COOKIE_NAME, isValidSessionCookie } from "@/lib/adminAuth";
+import { logoutAction } from "./login/actions";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
@@ -27,6 +31,11 @@ function formatDate(iso: string) {
 }
 
 export default async function AdminPage() {
+  const cookieStore = await cookies();
+  if (!isValidSessionCookie(cookieStore.get(ADMIN_COOKIE_NAME)?.value)) {
+    redirect("/admin/login");
+  }
+
   const supabase = supabaseAdmin();
 
   const [
@@ -56,7 +65,14 @@ export default async function AdminPage() {
 
   return (
     <div className="admin-wrap">
-      <h1 style={{ marginBottom: 6 }}>Admin dashboard</h1>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+        <h1 style={{ marginBottom: 6 }}>Admin dashboard</h1>
+        <form action={logoutAction}>
+          <button type="submit" className="btn ghost">
+            Log out
+          </button>
+        </form>
+      </div>
       <p style={{ marginBottom: 28 }}>
         Founding Circle entries, industry suggestions, and venture votes — live from Supabase.
         For traffic, visits, and visitor analytics, use{" "}
