@@ -7,5 +7,9 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
-  }
+  },
+  "routes": [
+    { "pattern": "transparentchanges.com", "custom_domain": true },
+    { "pattern": "www.transparentchanges.com", "custom_domain": true }
+  ]
 }
