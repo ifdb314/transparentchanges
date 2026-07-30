@@ -19,7 +19,7 @@ export default async function FoundingCirclePage() {
         className="photo-band"
         style={{
           backgroundImage:
-            "linear-gradient(180deg, rgba(19,14,10,0.1), rgba(19,14,10,0.8)), url('/images/volunteers.jpg')",
+            "linear-gradient(180deg, rgba(16,40,31,0.1), rgba(16,40,31,0.8)), url('/images/volunteers.jpg')",
         }}
       >
         <div className="photo-band-text">

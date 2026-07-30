@@ -39,7 +39,7 @@ export default async function VenturePage({
         className="photo-hero"
         style={{
           backgroundImage:
-            `linear-gradient(115deg, rgba(19,14,10,0.88) 20%, rgba(60,40,20,0.6) 65%, rgba(90,60,30,0.4) 100%), url('${venture.photo}')`,
+            `linear-gradient(115deg, rgba(16,40,31,0.88) 20%, rgba(60,40,20,0.6) 65%, rgba(90,60,30,0.4) 100%), url('${venture.photo}')`,
         }}
       >
         <div className="photo-hero-inner" style={{ gridTemplateColumns: "1fr" }}>

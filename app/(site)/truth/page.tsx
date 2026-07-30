@@ -79,7 +79,7 @@ export default function TruthPage() {
         className="photo-band"
         style={{
           backgroundImage:
-            "linear-gradient(180deg, rgba(19,14,10,0.1), rgba(19,14,10,0.8)), url('/images/overworked.jpg')",
+            "linear-gradient(180deg, rgba(16,40,31,0.1), rgba(16,40,31,0.8)), url('/images/overworked.jpg')",
         }}
       >
         <div className="photo-band-text">
@@ -90,7 +90,9 @@ export default function TruthPage() {
       <section className="band">
         <div className="band-head">
           <div className="band-eyebrow">Sourced, dated, screenshot-sized</div>
-          <h2>Truth you don&apos;t know.</h2>
+          <h2>
+            Truth <span className="soft">you don&apos;t know.</span>
+          </h2>
           <p>
             What the biggest players in each industry — and the economy at large — don&apos;t put
             on the receipt.
@@ -99,8 +101,8 @@ export default function TruthPage() {
 
         <div className="truth-subhead">By industry</div>
         <div className="truth-grid-site">
-          {BY_INDUSTRY.map((t) => (
-            <div className="tcard" key={t.stat + t.src}>
+          {BY_INDUSTRY.map((t, i) => (
+            <div className={`tcard tc-${(i % 3) + 1}`} key={t.stat + t.src}>
               <div className="tstat">{t.stat}</div>
               <div className="tbody">{t.body}</div>
               <div className="tsrc">{t.src}</div>
@@ -111,8 +113,8 @@ export default function TruthPage() {
 
         <div className="truth-subhead">The bigger picture</div>
         <div className="truth-grid-site">
-          {BIGGER_PICTURE.map((t) => (
-            <div className="tcard" key={t.stat + t.src}>
+          {BIGGER_PICTURE.map((t, i) => (
+            <div className={`tcard tc-${(i % 3) + 1}`} key={t.stat + t.src}>
               <div className="tstat">{t.stat}</div>
               <div className="tbody">{t.body}</div>
               <div className="tsrc">{t.src}</div>

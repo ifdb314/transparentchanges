@@ -39,6 +39,20 @@ export function positionFromId(id: string): { top: number; left: number } {
   return { top, left };
 }
 
+/**
+ * Deterministic small pixel offset derived from a row's id, so a marker is stable across
+ * renders but multiple pledges from the same state don't all stack on the exact centroid.
+ */
+export function jitterFromId(id: string, radius = 16): { dx: number; dy: number } {
+  let hash = 0;
+  for (let i = 0; i < id.length; i++) {
+    hash = (hash * 31 + id.charCodeAt(i)) >>> 0;
+  }
+  const angle = (hash % 360) * (Math.PI / 180);
+  const dist = ((hash >> 8) % 100) / 100 * radius;
+  return { dx: Math.cos(angle) * dist, dy: Math.sin(angle) * dist };
+}
+
 export async function getFoundingCircleData(): Promise<FoundingCircleData> {
   const supabase = supabaseAdmin();
 

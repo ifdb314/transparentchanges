@@ -6,7 +6,9 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="site-header-inner">
         <Link href="/" className="site-logo">
-          <LogoMark />
+          <span className="logo-badge">
+            <LogoMark />
+          </span>
           <span className="site-logo-text">TransparentChanges</span>
         </Link>
         <nav className="site-nav">

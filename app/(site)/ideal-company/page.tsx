@@ -62,13 +62,15 @@ export default function IdealCompanyPage() {
         style={{
           paddingTop: 56,
           backgroundImage:
-            "linear-gradient(115deg, rgba(19,14,10,0.88) 20%, rgba(60,40,20,0.62) 65%, rgba(90,60,30,0.45) 100%), url('/images/family.jpg')",
+            "linear-gradient(115deg, rgba(16,40,31,0.88) 20%, rgba(60,40,20,0.62) 65%, rgba(90,60,30,0.45) 100%), url('/images/family.jpg')",
         }}
       >
         <div className="photo-hero-inner" style={{ gridTemplateColumns: "1fr" }}>
           <div>
             <div className="stamp">Not a mission statement — a checklist</div>
-            <h1 style={{ maxWidth: "20ch" }}>The next evolution of the American workplace.</h1>
+            <h1 style={{ maxWidth: "20ch" }}>
+              The next evolution <span className="soft">of the American workplace.</span>
+            </h1>
             <p className="hero-lede" style={{ maxWidth: "62ch" }}>
               This is the standard every TransparentChanges venture is measured against — the
               thing we&apos;re actually building toward, one honest decision at a time.
@@ -79,8 +81,9 @@ export default function IdealCompanyPage() {
 
       <section className="band">
         <div className="tenet-grid">
-          {TENETS.map((t) => (
+          {TENETS.map((t, i) => (
             <div className="tenet-card" key={t.title}>
+              <div className="tenet-num">{String(i + 1).padStart(2, "0")}</div>
               <h3>{t.title}</h3>
               <p>{t.body}</p>
               <div className="tshare">Share this ↗</div>

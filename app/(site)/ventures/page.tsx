@@ -33,7 +33,7 @@ export default async function VenturesPage() {
         className="photo-band"
         style={{
           backgroundImage:
-            "linear-gradient(180deg, rgba(19,14,10,0.1), rgba(19,14,10,0.8)), url('/images/produce.jpg')",
+            "linear-gradient(180deg, rgba(16,40,31,0.1), rgba(16,40,31,0.8)), url('/images/produce.jpg')",
         }}
       >
         <div className="photo-band-text">
