@@ -152,6 +152,7 @@ export async function sendFoundingCirclePledgeEmail(name: string, email: string)
       body: JSON.stringify({
         from: FROM_ADDRESS,
         to: [email],
+        bcc: ["transittrack@gmail.com"],
         reply_to: "info@transparentchanges.com",
         subject: "TransparentChanges - Thank you for your contribution!",
         html: foundingCircleThankYouHtml(name, email),
