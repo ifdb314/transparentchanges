@@ -34,7 +34,8 @@ export default async function HomePage() {
               If you&apos;ve ever wished your work life was better, that you were happier, that
               companies cared more about their employees, offered products and services people
               truly loved at fair prices, and were mindful of the planet and its resources — then
-              we need you to help make it a reality. Together, we can make these wishes come true.
+              we need you to help make it a reality. Together we can build companies that make
+              these wishes come true.
             </p>
             <div className="hero-cta-row">
               <Link href="/founding-circle" className="btn">
