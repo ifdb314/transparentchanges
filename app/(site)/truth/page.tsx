@@ -23,14 +23,14 @@ const BY_INDUSTRY = [
     src: "Main Street Wealth, 2025",
   },
   {
-    stat: "33–40%",
-    body: "The standard contingency fee lawyers take — with the firm's actual win rate rarely disclosed upfront.",
-    src: "LegalClarity, 2025",
+    stat: "$349/hr",
+    body: "The average U.S. lawyer's billing rate in 2025, up from $255 in 2016 — while firm win rates are almost never disclosed upfront.",
+    src: "Clio Legal Trends Report, 2025",
   },
   {
-    stat: "$16.1M",
-    body: "Paid by one of America's largest homebuilders to 200+ buyers over roof, joist, and water-intrusion defects.",
-    src: "Sauder Schelkopf, 2025",
+    stat: "92%",
+    body: "New homeowners who ran into at least one major repair issue within their first year in the home.",
+    src: "American Home Shield survey, 2024",
   },
 ];
 
@@ -83,7 +83,7 @@ export default function TruthPage() {
         }}
       >
         <div className="photo-band-text">
-          <p>These numbers have names attached.</p>
+          <p>These numbers affect real people.</p>
         </div>
       </div>
 

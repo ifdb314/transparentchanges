@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Ventures",
-  description: "Vote for what we build next — one vote per person, per venture.",
+  description: "Vote for what we change next — one vote per person, per venture.",
 };
 
 export default async function VenturesPage() {
@@ -37,14 +37,18 @@ export default async function VenturesPage() {
         }}
       >
         <div className="photo-band-text">
-          <p>Vote for what we build next.</p>
+          <p>Vote for what we change next.</p>
+          <small>Every venture starts with demand.</small>
         </div>
       </div>
 
       <section className="band">
         <div className="band-head">
           <div className="band-eyebrow">One vote per person, per venture</div>
-          <h2>Every industry here started as a vote.</h2>
+          <h2>Every venture starts with demand.</h2>
+          <p>
+            See problem industries people have suggested, or suggest a problem area you know of.
+          </p>
         </div>
         <div className="vote-grid-site">
           {sortedVentures.map((v) => (
@@ -60,12 +64,13 @@ export default async function VenturesPage() {
 
           {(suggestions || []).map((s) => (
             <div className="vote-card-site submitted" key={s.id}>
+              <div className="vote-photo-placeholder">
+                <span className="name">{s.name}</span>
+                <span className="state">{s.location}</span>
+              </div>
               <div className="vote-body">
                 <div className="tag-submitted-site">Community submitted</div>
                 <h3>{s.industry}</h3>
-                <p>
-                  Submitted by {s.name} — {s.location}
-                </p>
                 <UpvoteButton slug={s.id} initialVotes={s.votes} />
               </div>
             </div>

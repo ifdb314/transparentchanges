@@ -1,10 +1,20 @@
 import Link from "next/link";
-import Image from "next/image";
-import { LedgerBar, LedgerLegend } from "@/components/LedgerBar";
+import { ProblemsChart, ProblemsLegend } from "@/components/ProblemsChart";
 import { VENTURE_ICONS } from "@/components/Icons";
 import { VENTURES } from "@/lib/ventures";
+import { getFoundingCircleData, initialsFromName, colorForName } from "@/lib/foundingCircle";
 
-export default function HomePage() {
+export const dynamic = "force-dynamic";
+
+export default async function HomePage() {
+  const data = await getFoundingCircleData();
+  const members = data.recent.slice(0, 5).map((r) => ({ key: r.id, name: r.name }));
+  const overflow = data.totalPeople - members.length;
+  const peopleHeadline =
+    data.totalPeople === 0
+      ? "Be the first to say yes."
+      : `${data.totalPeople.toLocaleString()} ${data.totalPeople === 1 ? "person has" : "people have"} already said yes.`;
+
   return (
     <>
       <section
@@ -18,12 +28,13 @@ export default function HomePage() {
           <div>
             <div className="stamp">Founding phase — We need you!</div>
             <h1>
-              Fair, <span className="soft">from the ground up.</span>
+              Built to be better, <span className="soft">from the ground up.</span>
             </h1>
             <p className="hero-lede">
-              We&apos;re building companies that publish their receipts and put employees and
-              customers first — a grocery distributor, a law firm, a plumber, a home builder, a
-              rideshare — one industry at a time, starting with the one you help build first.
+              If you&apos;ve ever wished your work life was better, that you were happier, that
+              companies cared more about their employees, offered products and services people
+              truly loved at fair prices, and were mindful of the planet and its resources — then
+              we need you to help make it a reality. Together, we can make these wishes come true.
             </p>
             <div className="hero-cta-row">
               <Link href="/founding-circle" className="btn">
@@ -35,10 +46,10 @@ export default function HomePage() {
             </div>
             <div className="hero-stats">
               <div>
-                <b>1,842</b>people in
+                <b>{data.totalPeople.toLocaleString()}</b>people in
               </div>
               <div>
-                <b>5</b>candidate ventures
+                <b>{VENTURES.length}</b>candidate ventures
               </div>
               <div>
                 <b>$0</b>required to join
@@ -46,19 +57,103 @@ export default function HomePage() {
             </div>
           </div>
           <div className="hero-chart-card">
-            <div className="hero-chart-label">
-              This is our own ledger — the same standard every venture will publish.
-            </div>
-            <LedgerBar />
-            <LedgerLegend />
+            <div className="hero-chart-label">Why we&apos;re doing this — what we hear again and again.</div>
+            <ProblemsChart />
+            <ProblemsLegend />
           </div>
         </div>
       </section>
 
       <section className="band forest">
         <div className="band-head">
-          <div className="band-eyebrow">Five ventures, one standard</div>
-          <h2>Ordinary industries, run the way they should have been all along.</h2>
+          <div className="band-eyebrow">Why TransparentChanges</div>
+          <h2>Here&apos;s exactly what we&apos;re trying to fix.</h2>
+          <p>
+            Before anything else, here&apos;s what&apos;s broken — the problems every
+            TransparentChanges venture is built to solve, right from the start, not eventually.
+          </p>
+        </div>
+        <ul className="point-grid issues">
+          <li>Working more than 40 hours a week, with no time left to actually live your life.</li>
+          <li>
+            Working five days a week where even the weekends disappear into chores, and life just
+            keeps dragging on.
+          </li>
+          <li>Hard work not feeling like it pays off, because workplace politics decide who gets ahead.</li>
+          <li>The sense that 20% of people do 80% of the work, and that it isn&apos;t fair.</li>
+          <li>
+            Executives making millions more than baseline workers, with no real way to move up in
+            a lifetime.
+          </li>
+          <li>
+            Feeling like the company doesn&apos;t actually care about you — it cares about profit
+            and how it looks to shareholders.
+          </li>
+          <li>
+            Constantly feeling like you could lose your job at any time, and the company
+            won&apos;t hesitate to let you go to save money.
+          </li>
+          <li>No matter how much you try to save, you just can&apos;t seem to get ahead.</li>
+          <li>Your job not feeling like it&apos;s actually helping the world — no real purpose to it.</li>
+          <li>
+            Not being proud of the company you work for — knowing they cut corners to turn a
+            profit, whether that&apos;s overcharging customers, misleading them, or selling
+            poor-quality products and services.
+          </li>
+          <li>Wishing the world put family and life first.</li>
+          <li>
+            Wishing companies put the planet, their employees, and their customers first —
+            trusting that profit would follow.
+          </li>
+        </ul>
+      </section>
+
+      <section className="band alt">
+        <div className="band-head">
+          <div className="band-eyebrow">A different starting point</div>
+          <h2>What if businesses were built better, from the ground up?</h2>
+        </div>
+        <ul className="point-grid whatif">
+          <li>Employees worked remotely as the first option, not the exception.</li>
+          <li>People worked 30–32 hours a week — a four-day week.</li>
+          <li>Companies prioritized people first, not profits.</li>
+          <li>
+            Management salaries were directly tied to employee salaries — capped at a maximum of
+            what their lowest-paid employee earns.
+          </li>
+          <li>100% of employees did 100% of the work.</li>
+          <li>Managers didn&apos;t push paper — they worked beside their employees.</li>
+          <li>Companies existed to make the world better.</li>
+          <li>Jobs had purpose — enough to let people actually live their lives and enjoy them.</li>
+        </ul>
+        <p className="band-closing">
+          These are just a few. If this is what you&apos;d like to see start to be the norm, help
+          us change the future. We can&apos;t do this alone — it&apos;s daunting going up against
+          big companies and established industries, but together, done the right way, we
+          absolutely can.
+        </p>
+        <p className="band-closing">
+          If you&apos;ve ever watched a movie where one person held tens or hundreds of people at
+          bay, and thought: why don&apos;t the people just band together and free themselves? They
+          have the numbers, and there&apos;s strength in numbers — that&apos;s what we&apos;re
+          asking of you. Join us. Help increase our numbers, in whatever way you can, so that
+          together we&apos;re strong.
+        </p>
+        <div className="hero-cta-row" style={{ marginTop: 22 }}>
+          <Link href="/founding-circle" className="btn">
+            Join the Founding Circle
+          </Link>
+        </div>
+      </section>
+
+      <section className="band forest">
+        <div className="band-head">
+          <div className="band-eyebrow">{VENTURES.length} ventures, one standard</div>
+          <h2>Let&apos;s change the way businesses have been run to the way they should be run.</h2>
+          <p>
+            Know of a problem? <Link href="/ventures#suggest">Suggest one</Link> — or simply see
+            examples below.
+          </p>
         </div>
         <div className="venture-grid-site">
           {VENTURES.map((v) => {
@@ -86,58 +181,47 @@ export default function HomePage() {
 
       <section className="band">
         <div className="band-head">
-          <h2>1,842 people already said yes.</h2>
+          <h2>{peopleHeadline}</h2>
         </div>
         <div className="story-row">
-          <div className="story-ring">
-            <div className="ring">
-              <Image src="/images/volunteers.jpg" alt="" width={66} height={66} style={{ objectFit: "cover", objectPosition: "30% 30%" }} />
+          {members.map((m) => (
+            <div className="story-ring" key={m.key}>
+              <div className="ring">
+                <div className="avatar-initials" style={{ background: colorForName(m.name) }}>
+                  {initialsFromName(m.name)}
+                </div>
+              </div>
+              <div className="label">{m.name}</div>
             </div>
-            <div className="label">Maria T.</div>
-          </div>
-          <div className="story-ring">
-            <div className="ring">
-              <Image src="/images/family.jpg" alt="" width={66} height={66} style={{ objectFit: "cover", objectPosition: "60% 30%" }} />
+          ))}
+          {overflow > 0 ? (
+            <div className="story-ring">
+              <div className="ring placeholder">
+                <div className="avatar-initials">+{overflow}</div>
+              </div>
+              <div className="label">and more</div>
             </div>
-            <div className="label">Jamal R.</div>
-          </div>
-          <div className="story-ring">
-            <div className="ring">
-              <Image src="/images/farmer.jpg" alt="" width={66} height={66} style={{ objectFit: "cover" }} />
+          ) : (
+            <div className="story-ring">
+              <div className="ring placeholder">
+                <div className="avatar-initials">?</div>
+              </div>
+              <div className="label">You?</div>
             </div>
-            <div className="label">Priya S.</div>
-          </div>
-          <div className="story-ring">
-            <div className="ring">
-              <Image src="/images/construction.jpg" alt="" width={66} height={66} style={{ objectFit: "cover", objectPosition: "60% 20%" }} />
-            </div>
-            <div className="label">Devon K.</div>
-          </div>
-          <div className="story-ring">
-            <div className="ring">
-              <Image src="/images/driver.jpg" alt="" width={66} height={66} style={{ objectFit: "cover" }} />
-            </div>
-            <div className="label">Owen P.</div>
-          </div>
-          <div className="story-ring">
-            <div className="ring placeholder">
-              <span>+1.8K</span>
-            </div>
-            <div className="label">You?</div>
-          </div>
+          )}
         </div>
       </section>
 
       <section className="band coral">
         <div className="band-head">
           <div className="band-eyebrow">What actually changes</div>
-          <h2>Not a better ad. A different set of numbers.</h2>
+          <h2>Not better ads or marketing. A promise to be fair and just.</h2>
         </div>
         <div className="compare">
           <div className="old">
             <h4>The industry standard</h4>
             <ul>
-              <li>Take rates and fees rise quietly, then stop being disclosed</li>
+              <li>Actual customer costs and profits are obscured</li>
               <li>Executive pay is a multiple no one at the company can see</li>
               <li>&quot;Values&quot; live on the About page, not the P&amp;L</li>
               <li>Layoffs fund the buyback, not the other way around</li>
@@ -146,9 +230,9 @@ export default function HomePage() {
           <div className="new">
             <h4>TransparentChanges</h4>
             <ul>
-              <li>Every rate, fee, and take is published and dated</li>
+              <li>Every sale, every cost, every dollar is listed and published</li>
               <li>Manager pay is capped at 2× their lowest-paid direct report</li>
-              <li>The Ledger is the values page — updated every quarter</li>
+              <li>First Steps is the values page — updated every 6 months</li>
               <li>Leadership pay moves before headcount does</li>
             </ul>
           </div>
@@ -178,18 +262,19 @@ export default function HomePage() {
             <div className="tsrc">EPI, 2024</div>
           </div>
           <div className="tcard tc-3">
-            <div className="tstat">$16.1M</div>
+            <div className="tstat">92%</div>
             <div className="tbody">
-              Paid by one major homebuilder to 200+ buyers over roof and water-intrusion defects.
+              New homeowners who ran into at least one major repair issue within their first year
+              in the home.
             </div>
-            <div className="tsrc">Sauder Schelkopf, 2025</div>
+            <div className="tsrc">American Home Shield survey, 2024</div>
           </div>
         </div>
       </section>
 
       <section className="cta-band">
         <div className="cta-band-inner">
-          <h2>Add your name. $0 required.</h2>
+          <h2>Help build a better future.</h2>
           <Link href="/founding-circle" className="btn">
             Join the Founding Circle
           </Link>

@@ -1,7 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { trackFoundingCirclePledge } from "@/components/Analytics";
+import { ShareWidget } from "@/components/ShareWidget";
+import { US_STATES } from "@/lib/usStates";
 
 type PledgeType = "money" | "word" | "volunteer" | "employee";
 
@@ -13,12 +16,14 @@ const TYPE_LABELS: Record<PledgeType, string> = {
 };
 
 export function PledgeForm() {
+  const router = useRouter();
   const [pledgeType, setPledgeType] = useState<PledgeType>("money");
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
+  const [email, setEmail] = useState("");
   const [amount, setAmount] = useState("");
   const [helpText, setHelpText] = useState("");
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
   const needsHelpText = pledgeType === "volunteer" || pledgeType === "employee";
@@ -36,6 +41,7 @@ export function PledgeForm() {
           pledgeType,
           name,
           location,
+          email,
           amount: pledgeType === "money" ? amount : undefined,
           helpText: needsHelpText ? helpText : undefined,
         }),
@@ -49,39 +55,28 @@ export function PledgeForm() {
       }
 
       trackFoundingCirclePledge(pledgeType);
-      setStatus("success");
-      setName("");
-      setLocation("");
-      setAmount("");
-      setHelpText("");
+      router.push("/founding-circle/thank-you");
     } catch {
       setErrorMessage("Couldn't reach the server. Check your connection and try again.");
       setStatus("error");
     }
   }
 
-  if (status === "success") {
-    return (
-      <div className="fc-note success">
-        You&apos;re in. Thank you — we&apos;ll be in touch as the Founding Circle grows.
-      </div>
-    );
-  }
-
   return (
     <form className="fc-form" onSubmit={handleSubmit}>
-      <div className="fc-type-row" role="group" aria-label="Pledge type">
-        {(Object.keys(TYPE_LABELS) as PledgeType[]).map((t) => (
-          <button
-            type="button"
-            key={t}
-            className="fc-type-btn"
-            aria-pressed={pledgeType === t}
-            onClick={() => setPledgeType(t)}
-          >
-            {TYPE_LABELS[t]}
-          </button>
-        ))}
+      <div>
+        <label htmlFor="pledgeType">How would you like to help?</label>
+        <select
+          id="pledgeType"
+          value={pledgeType}
+          onChange={(e) => setPledgeType(e.target.value as PledgeType)}
+        >
+          {(Object.keys(TYPE_LABELS) as PledgeType[]).map((t) => (
+            <option key={t} value={t}>
+              {TYPE_LABELS[t]}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div className="fc-row-2">
@@ -97,16 +92,40 @@ export function PledgeForm() {
           />
         </div>
         <div>
-          <label htmlFor="pledgeLocation">State / country</label>
-          <input
+          <label htmlFor="pledgeLocation">State</label>
+          <select
             id="pledgeLocation"
             required
-            maxLength={200}
-            placeholder="e.g. CO"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-          />
+          >
+            <option value="" disabled>
+              Select your state
+            </option>
+            {US_STATES.map((s) => (
+              <option key={s.code} value={s.code}>
+                {s.name}
+              </option>
+            ))}
+          </select>
         </div>
+      </div>
+
+      <div>
+        <label htmlFor="pledgeEmail">Email address</label>
+        <input
+          id="pledgeEmail"
+          required
+          type="email"
+          maxLength={320}
+          placeholder="you@example.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <p className="privacy-note">
+          We&apos;ll never sell, spam, or share your email — it&apos;s only used to keep you
+          updated on Founding Circle status and important news.
+        </p>
       </div>
 
       {pledgeType === "money" && (
@@ -143,6 +162,11 @@ export function PledgeForm() {
       <button type="submit" className="btn" disabled={status === "submitting"} style={{ justifySelf: "start" }}>
         {status === "submitting" ? "Joining…" : "Join the Founding Circle"}
       </button>
+
+      <div className="share-section">
+        <div className="share-section-label">Share with others</div>
+        <ShareWidget />
+      </div>
     </form>
   );
 }

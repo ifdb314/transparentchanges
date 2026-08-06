@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
+import { sendFoundingCirclePledgeEmail } from "@/lib/email";
 
 const VALID_TYPES = ["money", "word", "volunteer", "employee"] as const;
 type PledgeType = (typeof VALID_TYPES)[number];
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: NextRequest) {
   let body: Record<string, unknown>;
@@ -15,6 +17,7 @@ export async function POST(request: NextRequest) {
   const pledgeType = String(body.pledgeType || "");
   const name = String(body.name || "").trim();
   const location = String(body.location || "").trim();
+  const email = String(body.email || "").trim();
   const amount = body.amount != null ? Number(body.amount) : null;
   const helpText = body.helpText ? String(body.helpText).trim().slice(0, 2000) : null;
 
@@ -25,7 +28,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Your name is required." }, { status: 400 });
   }
   if (!location || location.length > 200) {
-    return NextResponse.json({ error: "State or country is required." }, { status: 400 });
+    return NextResponse.json({ error: "State is required." }, { status: 400 });
+  }
+  if (!email || email.length > 320 || !EMAIL_RE.test(email)) {
+    return NextResponse.json({ error: "A valid email address is required." }, { status: 400 });
   }
   if (pledgeType === "money") {
     if (!amount || Number.isNaN(amount) || amount < 5) {
@@ -47,6 +53,7 @@ export async function POST(request: NextRequest) {
     pledge_type: pledgeType,
     name,
     location,
+    email,
     amount_cents: pledgeType === "money" && amount ? Math.round(amount * 100) : null,
     help_text: helpText,
     source_page: request.headers.get("referer") || null,
@@ -60,6 +67,8 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
+
+  await sendFoundingCirclePledgeEmail(name, email);
 
   return NextResponse.json({ ok: true });
 }

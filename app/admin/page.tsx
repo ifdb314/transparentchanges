@@ -47,7 +47,7 @@ export default async function AdminPage() {
   ] = await Promise.all([
     supabase
       .from("founding_circle_entries")
-      .select("id, created_at, pledge_type, name, location, amount_cents, help_text")
+      .select("id, created_at, pledge_type, name, location, email, amount_cents, help_text")
       .order("created_at", { ascending: false })
       .limit(200),
     supabase.from("founding_circle_entries").select("id", { count: "exact", head: true }),
@@ -115,6 +115,7 @@ export default async function AdminPage() {
               <th>Type</th>
               <th>Name</th>
               <th>Location</th>
+              <th>Email</th>
               <th>Amount</th>
               <th>How they can help</th>
             </tr>
@@ -128,13 +129,14 @@ export default async function AdminPage() {
                 </td>
                 <td>{e.name}</td>
                 <td>{e.location}</td>
+                <td>{e.email || "—"}</td>
                 <td>{formatCents(e.amount_cents)}</td>
                 <td>{e.help_text || "—"}</td>
               </tr>
             ))}
             {(!entries || entries.length === 0) && (
               <tr>
-                <td colSpan={6}>No entries yet.</td>
+                <td colSpan={7}>No entries yet.</td>
               </tr>
             )}
           </tbody>

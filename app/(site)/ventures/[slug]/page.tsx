@@ -68,9 +68,9 @@ export default async function VenturePage({
         <div className="band-head" style={{ marginBottom: 0, display: "flex", alignItems: "center", gap: 16 }}>
           <Icon />
           <p style={{ margin: 0 }}>
-            Every venture publishes its own Ledger once it launches — the same standard shown on{" "}
-            <Link href="/the-ledger" style={{ color: "var(--accent)" }}>
-              the parent Ledger
+            Every venture publishes its own ledger once it launches — the same standard shown in{" "}
+            <Link href="/first-steps" style={{ color: "var(--accent)" }}>
+              First Steps
             </Link>
             .
           </p>

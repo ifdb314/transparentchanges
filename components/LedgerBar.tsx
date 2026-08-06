@@ -1,6 +1,5 @@
 const SEGMENTS = [
-  { key: "wages", label: "Wages", pct: 38, varName: "--chart-wages" },
-  { key: "lead", label: "Leadership", pct: 4, varName: "--chart-lead" },
+  { key: "wages", label: "Wages", pct: 42, varName: "--chart-wages" },
   { key: "materials", label: "Materials", pct: 34, varName: "--chart-materials" },
   { key: "ops", label: "Ops", pct: 14, varName: "--chart-ops" },
   { key: "research", label: "Research", pct: 4, varName: "--chart-research" },

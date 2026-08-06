@@ -10,47 +10,51 @@ export const metadata: Metadata = {
 const TENETS = [
   {
     title: "Fair prices, real quality",
-    body: "A product or service priced fairly and as low as it can honestly go — without cutting the quality or service customers deserve.",
+    body: "A product or service priced fairly and as low as it can honestly go — without cutting the quality or service customers deserve. We show customers what it costs us, what they're paying, and where the difference is going.",
   },
   {
-    title: "Employees are family, and everyone's in the know",
-    body: "Every employee is cared for like family, not a line item — and employees and the public alike know what the company is doing and how it's doing.",
+    title: "Built around a real life, not just a job",
+    body: "Remote-first wherever the work allows it, a 30–36 hour week, and three real days for family — so people aren't just working to live, they're living. Life first motto.",
   },
   {
     title: "100% of employees doing 100% of the work",
     body: "Layoffs are avoided by design — not 20% of employees carrying the other 80%, and never leadership bonuses funded by headcount cuts.",
   },
   {
-    title: "Bad managers don't get protected",
-    body: "When a hire isn't working out, or a manager plays favorites instead of leading, they're held accountable — not shielded because someone likes them.",
+    title: "Employees are family, and everyone's in the know",
+    body: "Every employee is cared for like family, not a line item — and employees and the public alike know what the company is doing and how it's doing.",
   },
   {
     title: "Leaders work alongside their people",
     body: "Real servant leadership means managers get their hands dirty next to their employees, not just pushing paper from above.",
   },
   {
-    title: "Built around a real life, not just a job",
-    body: "Remote-first wherever the work allows it, a 30–36 hour week, and three real days for family — so people aren't just working to live, they're living. Holidays try to line up with school breaks and family time, too.",
+    title: "Bad managers don't get protected",
+    body: "When a hire isn't working out, or a manager plays favorites instead of leading, they're held accountable — they yield to the consequences of their actions. Titles are never a shield.",
   },
   {
-    title: "The benefit of the doubt, not a blank check",
-    body: "Customers get the benefit of the doubt — but the ones who abuse, steal, or cheat are let go, so they don't drive up prices or morale problems for everyone else.",
+    title: "Good customers are cherished",
+    body: "Customers get the benefit of the doubt — but the ones who abuse, steal, or cheat are let go. Neither other customers nor employees should pay for bad customer behavior or actions.",
   },
   {
     title: "Hired on merit. Full stop.",
-    body: "The most qualified person gets the job — not the one who fits a quota. Everyone is equal, and honesty and sincerity beat politics and favoritism, every time.",
+    body: "The most qualified person gets the job — not the one who fits a quota. Everyone is equal, and hard work, honesty and sincerity beat politics and favoritism, every time.",
   },
   {
     title: "Profit that builds the next thing",
-    body: "Profit flows back into the community — ideally into starting the next venture that improves it further, not just into a buyback. And it's mindful of its environmental footprint, not just filling office seats and adding to traffic.",
+    body: "Profit flows back into the community — ideally into starting the next venture that creates opportunities for people, not just into a buyback. And it's mindful of its environmental footprint, not just filling office seats and adding to traffic.",
   },
   {
     title: "Technology that adds, not replaces",
-    body: "AI is used to help people do more — not as an excuse to replace the person already doing the job.",
+    body: "AI is used to help people do more — not as an excuse to replace the person already doing the job. Human lives depend on their living — that must never be forgotten.",
   },
   {
     title: "Job security you can actually feel",
     body: "Loyalty goes both ways. The quiet fear of losing your job for no good reason is something we're actively trying to eliminate — and coworkers stay because they share the same purpose, not just a paycheck.",
+  },
+  {
+    title: "Making a difference",
+    body: "Every company has a mission to make a real difference — bettering the world in some way, not just making money or turning a profit. Every venture exists to build a better, more sustainable future. Period.",
   },
 ];
 

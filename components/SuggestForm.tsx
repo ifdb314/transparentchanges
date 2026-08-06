@@ -1,6 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { US_STATES } from "@/lib/usStates";
+
+const INDUSTRY_MAX = 35;
+const WHY_MAX = 200;
 
 export function SuggestForm() {
   const [industry, setIndustry] = useState("");
@@ -58,21 +62,28 @@ export function SuggestForm() {
         <input
           id="sugIndustry"
           required
-          maxLength={200}
+          maxLength={INDUSTRY_MAX}
           placeholder="e.g. Cell phone plans"
           value={industry}
           onChange={(e) => setIndustry(e.target.value)}
         />
+        <p className="privacy-note">
+          {INDUSTRY_MAX} characters max — this becomes the card title. {industry.length}/{INDUSTRY_MAX}
+        </p>
       </div>
       <div>
         <label htmlFor="sugWhy">Why does it need this?</label>
         <textarea
           id="sugWhy"
           required
+          maxLength={WHY_MAX}
           placeholder="Two sentences on the problem and who it hurts most."
           value={whyNeeded}
           onChange={(e) => setWhyNeeded(e.target.value)}
         />
+        <p className="privacy-note">
+          {WHY_MAX} characters max. {whyNeeded.length}/{WHY_MAX}
+        </p>
       </div>
       <div className="fc-row-2">
         <div>
@@ -87,15 +98,22 @@ export function SuggestForm() {
           />
         </div>
         <div>
-          <label htmlFor="sugLocation">State / country</label>
-          <input
+          <label htmlFor="sugLocation">State</label>
+          <select
             id="sugLocation"
             required
-            maxLength={200}
-            placeholder="e.g. CO"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-          />
+          >
+            <option value="" disabled>
+              Select your state
+            </option>
+            {US_STATES.map((s) => (
+              <option key={s.code} value={s.code}>
+                {s.name}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
       {status === "error" && <div className="fc-note error">{errorMessage}</div>}

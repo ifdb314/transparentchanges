@@ -1,12 +1,5 @@
 import { supabaseAdmin } from "@/lib/supabase";
 
-const US_STATES = new Set([
-  "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA",
-  "KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ",
-  "NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT",
-  "VA","WA","WV","WI","WY","DC",
-]);
-
 export type PledgeRow = {
   id: string;
   name: string;
@@ -21,23 +14,8 @@ export type FoundingCircleData = {
   recent: PledgeRow[];
 };
 
-/** Reveal rule: below $5,000 pledged, only the headcount is public. */
-export const REVEAL_THRESHOLD_CENTS = 500000;
-
-export function isUsLocation(location: string): boolean {
-  return US_STATES.has(location.trim().toUpperCase());
-}
-
-/** Deterministic pseudo-random position (10%-90%) derived from a row's id, so placement is stable across renders. */
-export function positionFromId(id: string): { top: number; left: number } {
-  let hash = 0;
-  for (let i = 0; i < id.length; i++) {
-    hash = (hash * 31 + id.charCodeAt(i)) >>> 0;
-  }
-  const top = 12 + (hash % 76); // 12–88
-  const left = 12 + ((hash >> 8) % 76); // 12–88
-  return { top, left };
-}
+/** Reveal rule: below $25,000 pledged, only the headcount is public. */
+export const REVEAL_THRESHOLD_CENTS = 2500000;
 
 /**
  * Deterministic small pixel offset derived from a row's id, so a marker is stable across
@@ -51,6 +29,31 @@ export function jitterFromId(id: string, radius = 16): { dx: number; dy: number 
   const angle = (hash % 360) * (Math.PI / 180);
   const dist = ((hash >> 8) % 100) / 100 * radius;
   return { dx: Math.cos(angle) * dist, dy: Math.sin(angle) * dist };
+}
+
+const AVATAR_COLORS = [
+  "var(--accent)",
+  "var(--forest)",
+  "var(--gold-deep)",
+  "var(--accent-deep)",
+  "var(--forest-soft)",
+];
+
+/** "Maria T." -> "MT", "Justin J" -> "JJ", single word -> first letter. */
+export function initialsFromName(name: string): string {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "?";
+  if (parts.length === 1) return parts[0][0].toUpperCase();
+  return (parts[0][0] + parts[1][0]).toUpperCase();
+}
+
+/** Deterministic color from the palette so the same name always gets the same bubble color. */
+export function colorForName(name: string): string {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = (hash * 31 + name.charCodeAt(i)) >>> 0;
+  }
+  return AVATAR_COLORS[hash % AVATAR_COLORS.length];
 }
 
 export async function getFoundingCircleData(): Promise<FoundingCircleData> {

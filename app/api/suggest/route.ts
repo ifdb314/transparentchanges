@@ -14,14 +14,20 @@ export async function POST(request: NextRequest) {
   const name = String(body.name || "").trim();
   const location = String(body.location || "").trim();
 
-  if (!industry || industry.length > 200) {
-    return NextResponse.json({ error: "Tell us the industry or company idea." }, { status: 400 });
+  if (!industry || industry.length > 35) {
+    return NextResponse.json(
+      { error: "Industry or company idea must be 35 characters or fewer." },
+      { status: 400 }
+    );
   }
-  if (!whyNeeded || whyNeeded.length > 2000) {
-    return NextResponse.json({ error: "Tell us why it's needed." }, { status: 400 });
+  if (!whyNeeded || whyNeeded.length > 200) {
+    return NextResponse.json(
+      { error: "Tell us why it's needed, in 200 characters or fewer." },
+      { status: 400 }
+    );
   }
   if (!name || !location) {
-    return NextResponse.json({ error: "Your name and state/country are required." }, { status: 400 });
+    return NextResponse.json({ error: "Your name and state are required." }, { status: 400 });
   }
 
   const supabase = supabaseAdmin();

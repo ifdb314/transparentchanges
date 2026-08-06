@@ -6,7 +6,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://transparentchanges.
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = [
     "",
-    "/the-ledger",
+    "/first-steps",
     "/founding-circle",
     "/ventures",
     "/ideal-company",

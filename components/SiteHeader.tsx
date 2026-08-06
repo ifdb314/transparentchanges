@@ -13,7 +13,7 @@ export function SiteHeader() {
         </Link>
         <nav className="site-nav">
           <Link href="/ventures">Ventures</Link>
-          <Link href="/the-ledger">The Ledger</Link>
+          <Link href="/first-steps">First Steps</Link>
           <Link href="/founding-circle">Founding Circle</Link>
           <Link href="/ideal-company">Ideal Company</Link>
           <Link href="/truth">Truth</Link>

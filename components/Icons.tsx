@@ -47,12 +47,17 @@ export function IconLaw({ className = "icon" }: { className?: string }) {
 
 export function IconPlumbing({ className = "icon" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 48 48" aria-hidden="true">
-      <g transform="rotate(-30 24 24)">
-        <circle cx="12" cy="24" r="6.5" fill="none" stroke="currentColor" strokeWidth="2.4" />
-        <rect x="12" y="21.2" width="24" height="5.6" fill="currentColor" />
-        <circle cx="36" cy="24" r="6.5" fill="none" stroke="currentColor" strokeWidth="2.4" />
-      </g>
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
     </svg>
   );
 }
@@ -78,12 +83,50 @@ export function IconRides({ className = "icon" }: { className?: string }) {
   );
 }
 
+export function IconReviews({ className = "icon" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" aria-hidden="true">
+      <polygon
+        points="24,6 29,18 42,19 32,27 35,40 24,33 13,40 16,27 6,19 19,18"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function IconWebsite({ className = "icon" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" aria-hidden="true">
+      <rect x="6" y="10" width="36" height="28" rx="2" fill="none" stroke="currentColor" strokeWidth="2" />
+      <line x1="6" y1="18" x2="42" y2="18" stroke="currentColor" strokeWidth="2" />
+      <circle cx="11" cy="14" r="1.3" fill="currentColor" />
+      <circle cx="16" cy="14" r="1.3" fill="currentColor" />
+    </svg>
+  );
+}
+
+export function IconCreditCard({ className = "icon" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" aria-hidden="true">
+      <rect x="5" y="12" width="38" height="26" rx="3" fill="none" stroke="currentColor" strokeWidth="2" />
+      <line x1="5" y1="20" x2="43" y2="20" stroke="currentColor" strokeWidth="2.6" />
+      <line x1="11" y1="30" x2="21" y2="30" stroke="currentColor" strokeWidth="2" />
+    </svg>
+  );
+}
+
 export const VENTURE_ICONS = {
   market: IconMarket,
   law: IconLaw,
   plumbing: IconPlumbing,
   "home-building": IconHomeBuilding,
   rides: IconRides,
+  reviews: IconReviews,
+  website: IconWebsite,
+  "credit-cards": IconCreditCard,
 } as const;
 
 export type VentureSlug = keyof typeof VENTURE_ICONS;

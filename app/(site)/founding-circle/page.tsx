@@ -30,8 +30,7 @@ export default async function FoundingCirclePage() {
       <section className="band">
         <div className="band-head">
           <div className="band-eyebrow">No card required</div>
-          <h2>Add your name to the Founding Circle.</h2>
-          <p>Pick one — you can always add another later.</p>
+          <h2>Help in any way you wish.</h2>
         </div>
         <div className="fc-grid">
           <PledgeForm />
