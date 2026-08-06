@@ -57,55 +57,11 @@ export default async function HomePage() {
             </div>
           </div>
           <div className="hero-chart-card">
-            <div className="hero-chart-label">Why we&apos;re doing this — what we hear again and again.</div>
+            <div className="hero-chart-label">Top reasons people are unhappy at work.</div>
             <ProblemsChart />
             <ProblemsLegend />
           </div>
         </div>
-      </section>
-
-      <section className="band forest">
-        <div className="band-head">
-          <div className="band-eyebrow">Why TransparentChanges</div>
-          <h2>Here&apos;s exactly what we&apos;re trying to fix.</h2>
-          <p>
-            Before anything else, here&apos;s what&apos;s broken — the problems every
-            TransparentChanges venture is built to solve, right from the start, not eventually.
-          </p>
-        </div>
-        <ul className="point-grid issues">
-          <li>Working more than 40 hours a week, with no time left to actually live your life.</li>
-          <li>
-            Working five days a week where even the weekends disappear into chores, and life just
-            keeps dragging on.
-          </li>
-          <li>Hard work not feeling like it pays off, because workplace politics decide who gets ahead.</li>
-          <li>The sense that 20% of people do 80% of the work, and that it isn&apos;t fair.</li>
-          <li>
-            Executives making millions more than baseline workers, with no real way to move up in
-            a lifetime.
-          </li>
-          <li>
-            Feeling like the company doesn&apos;t actually care about you — it cares about profit
-            and how it looks to shareholders.
-          </li>
-          <li>
-            Constantly feeling like you could lose your job at any time, and the company
-            won&apos;t hesitate to let you go to save money.
-          </li>
-          <li>No matter how much you try to save, you just can&apos;t seem to get ahead.</li>
-          <li>Your job not feeling like it&apos;s actually helping the world — no real purpose to it.</li>
-          <li>
-            Not being proud of the company you work for — knowing they cut corners to turn a
-            profit, whether that&apos;s overcharging customers, misleading them, or selling
-            poor-quality products and services.
-          </li>
-          <li>Wishing the world put family and life first.</li>
-          <li>
-            Wishing companies put the planet, their employees, and their customers first —
-            trusting that profit would follow.
-          </li>
-        </ul>
       </section>
 
       <section className="band alt">
@@ -117,14 +73,11 @@ export default async function HomePage() {
           <li>Employees worked remotely as the first option, not the exception.</li>
           <li>People worked 30–32 hours a week — a four-day week.</li>
           <li>Companies prioritized people first, not profits.</li>
-          <li>
-            Management salaries were directly tied to employee salaries — capped at a maximum of
-            what their lowest-paid employee earns.
-          </li>
+          <li>Manager salaries directly capped to their lowest-paid employee.</li>
           <li>100% of employees did 100% of the work.</li>
           <li>Managers didn&apos;t push paper — they worked beside their employees.</li>
           <li>Companies existed to make the world better.</li>
-          <li>Jobs had purpose — enough to let people actually live their lives and enjoy them.</li>
+          <li>Jobs had purpose — sense of doing something important.</li>
         </ul>
         <p className="band-closing">
           These are just a few. If this is what you&apos;d like to see start to be the norm, help
