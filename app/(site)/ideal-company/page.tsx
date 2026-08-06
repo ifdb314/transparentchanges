@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 
 const TENETS = [
   {
-    title: "Fair prices, real quality",
-    body: "A product or service priced fairly and as low as it can honestly go — without cutting the quality or service customers deserve. We show customers what it costs us, what they're paying, and where the difference is going.",
+    title: "Built around a real life, not just a job",
+    body: "Remote-first wherever the work allows it, a 30–32 hour week, and three real days for family — so people aren't just working to live, they're living. Life first motto.",
   },
   {
-    title: "Built around a real life, not just a job",
-    body: "Remote-first wherever the work allows it, a 30–36 hour week, and three real days for family — so people aren't just working to live, they're living. Life first motto.",
+    title: "Fair prices, real quality",
+    body: "A product or service priced fairly and as low as it can honestly go — without cutting the quality or service customers deserve. We show customers what it costs us, what they're paying, and where the difference is going.",
   },
   {
     title: "100% of employees doing 100% of the work",
@@ -42,7 +42,7 @@ const TENETS = [
   },
   {
     title: "Profit that builds the next thing",
-    body: "Profit flows back into the community — ideally into starting the next venture that creates opportunities for people, not just into a buyback. And it's mindful of its environmental footprint, not just filling office seats and adding to traffic.",
+    body: "Profit flows back into the community — ideally into starting the next venture that creates opportunities for people, not just into a buyback. Every venture is mindful of its environmental footprint.",
   },
   {
     title: "Technology that adds, not replaces",
