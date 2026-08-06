@@ -18,7 +18,7 @@ export default function PersonalExperiencesPage() {
       <div className="pe-story">
         <div className="pe-story-num">Story One</div>
         <p>
-          On my first job for the FAA, I finished the work three weeks ahead of schedule — I&apos;d
+          On my first job for the government, I finished the work three weeks ahead of schedule — I&apos;d
           preordered materials and had the remote site prepped and staged so I could start working
           the moment I arrived, saving on per diem and other travel costs that were ultimately
           funded by taxpayers.

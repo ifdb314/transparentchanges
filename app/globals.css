@@ -125,11 +125,16 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .photo-band-text small { display: block; margin-top: 8px; color: rgba(255,249,240,0.78); font-family: var(--font-body); font-style: normal; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
 
 .hero-chart-card { background: var(--bg-raised); border: none; border-radius: 20px; padding: 22px; box-shadow: 0 20px 40px rgba(16,40,31,0.28); }
-.hero-chart-label { font-size: 0.84rem; margin-bottom: 14px; text-align: center; }
-.problems-chart-svg { display: block; margin: 0 auto; width: 100%; height: auto; max-width: 460px; }
-.problems-chart-svg .chart-pct { font-family: var(--font-body); font-weight: 800; font-size: 22px; fill: #fff; paint-order: stroke; stroke: rgba(0,0,0,0.18); stroke-width: 3px; }
-.problems-chart-svg .chart-icon { font-size: 22px; }
-.problems-chart-svg .chart-label { font-family: var(--font-body); font-weight: 700; font-size: 12.5px; fill: var(--ink); }
+
+.quote-carousel { display: flex; flex-direction: column; align-items: center; }
+.quote-slides { position: relative; width: 100%; min-height: 200px; }
+.quote-slide { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8px 6px; opacity: 0; transition: opacity 0.8s ease; }
+.quote-slide.active { opacity: 1; }
+.quote-slide p { font-family: var(--font-serif); font-style: italic; font-size: 1.12rem; line-height: 1.55; color: var(--ink); margin: 0 0 12px; }
+.quote-slide cite { font-style: normal; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.01em; color: var(--ink-soft); }
+.quote-dots { display: flex; gap: 7px; margin-top: 12px; }
+.quote-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--rule-strong); transition: background 0.3s ease, transform 0.3s ease; }
+.quote-dot.active { background: var(--accent); transform: scale(1.3); }
 
 /* ledger bar */
 .ledger-bar { display: flex; gap: 2px; height: 34px; width: 100%; border-radius: 999px; overflow: hidden; }
