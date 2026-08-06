@@ -126,7 +126,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
 .hero-chart-card { background: var(--bg-raised); border: none; border-radius: 20px; padding: 22px; box-shadow: 0 20px 40px rgba(16,40,31,0.28); }
 .hero-chart-label { font-size: 0.84rem; margin-bottom: 14px; }
-.problems-chart-svg { display: block; margin: 0 auto; }
+.problems-chart-svg { display: block; margin: 0 auto; width: 100%; height: auto; max-width: 460px; }
+.problems-chart-svg .chart-pct { font-family: var(--font-body); font-weight: 800; font-size: 22px; fill: #fff; paint-order: stroke; stroke: rgba(0,0,0,0.18); stroke-width: 3px; }
+.problems-chart-svg .chart-icon { font-size: 22px; }
+.problems-chart-svg .chart-label { font-family: var(--font-body); font-weight: 700; font-size: 12.5px; fill: var(--ink); }
 
 /* ledger bar */
 .ledger-bar { display: flex; gap: 2px; height: 34px; width: 100%; border-radius: 999px; overflow: hidden; }

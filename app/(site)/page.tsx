@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ProblemsChart, ProblemsLegend } from "@/components/ProblemsChart";
+import { ProblemsChart } from "@/components/ProblemsChart";
 import { VENTURE_ICONS } from "@/components/Icons";
 import { VENTURES } from "@/lib/ventures";
 import { getFoundingCircleData, initialsFromName, colorForName } from "@/lib/foundingCircle";
@@ -59,7 +59,6 @@ export default async function HomePage() {
           <div className="hero-chart-card">
             <div className="hero-chart-label">Top reasons people are unhappy at work.</div>
             <ProblemsChart />
-            <ProblemsLegend />
           </div>
         </div>
       </section>
