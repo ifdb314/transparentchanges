@@ -28,9 +28,9 @@ export default function FirstStepsPage() {
           <p>
             To do this right and make change, it starts with transparency — making costs
             transparent, making pricing transparent, making profits transparent, so employees,
-            customers, and the public know and believe in the company. Change starts with truth
-            and transparency, and the biggest piece missing from most — if not every — industry
-            today is accounting transparency. So that&apos;s the first thing.
+            customers, and the public know and believe in the company. The biggest piece missing
+            from most — if not every — industry today is accounting transparency. So
+            that&apos;s the first thing.
           </p>
         </div>
       </section>
