@@ -9,7 +9,7 @@ export function SiteFooter() {
           <LogoMark />
           <div>
             TransparentChanges
-            <small>Built to be better, from the ground up.</small>
+            <small>Help build a better future, from the ground up.</small>
           </div>
         </div>
         <div className="site-footer-cols">

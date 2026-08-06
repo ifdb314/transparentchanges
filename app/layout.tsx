@@ -7,13 +7,13 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://transparentchanges.
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "TransparentChanges — Built to be better, from the ground up.",
+    default: "TransparentChanges — Help build a better future, from the ground up.",
     template: "%s — TransparentChanges",
   },
   description:
     "We're building companies that publish their receipts and put employees and customers first — a grocery distributor, a law firm, a plumber, a home builder, a rideshare — one industry at a time.",
   openGraph: {
-    title: "TransparentChanges — Built to be better, from the ground up.",
+    title: "TransparentChanges — Help build a better future, from the ground up.",
     description:
       "Companies that publish their receipts and put employees and customers first. Join the Founding Circle — $0 required.",
     url: siteUrl,
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TransparentChanges — Built to be better, from the ground up.",
+    title: "TransparentChanges — Help build a better future, from the ground up.",
     description:
       "Companies that publish their receipts and put employees and customers first.",
     images: ["/images/hero_hands.jpg"],

@@ -28,7 +28,7 @@ export default async function HomePage() {
           <div>
             <div className="stamp">Founding phase — We need you!</div>
             <h1>
-              Built to be better, <span className="soft">from the ground up.</span>
+              Help build a better future, <span className="soft">from the ground up.</span>
             </h1>
             <p className="hero-lede">
               If you&apos;ve ever wished your work life was better, that you were happier, that
