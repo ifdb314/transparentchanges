@@ -125,7 +125,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .photo-band-text small { display: block; margin-top: 8px; color: rgba(255,249,240,0.78); font-family: var(--font-body); font-style: normal; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
 
 .hero-chart-card { background: var(--bg-raised); border: none; border-radius: 20px; padding: 22px; box-shadow: 0 20px 40px rgba(16,40,31,0.28); }
-.hero-chart-label { font-size: 0.84rem; margin-bottom: 14px; }
+.hero-chart-label { font-size: 0.84rem; margin-bottom: 14px; text-align: center; }
 .problems-chart-svg { display: block; margin: 0 auto; width: 100%; height: auto; max-width: 460px; }
 .problems-chart-svg .chart-pct { font-family: var(--font-body); font-weight: 800; font-size: 22px; fill: #fff; paint-order: stroke; stroke: rgba(0,0,0,0.18); stroke-width: 3px; }
 .problems-chart-svg .chart-icon { font-size: 22px; }

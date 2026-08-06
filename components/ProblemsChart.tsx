@@ -55,7 +55,7 @@ export function ProblemsChart() {
     const dx = EXPLODE * Math.cos(rad);
     const dy = EXPLODE * Math.sin(rad);
     const pctPoint = toXY(0, 0, R * 0.6, mid);
-    const labelPoint = toXY(0, 0, R + 40, mid);
+    const labelPoint = toXY(0, 0, R + 20, mid);
     return { ...s, start, end, dx, dy, pctPoint, labelPoint };
   });
 
