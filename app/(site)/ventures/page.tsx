@@ -47,7 +47,7 @@ export default async function VenturesPage() {
           <div className="band-eyebrow">One vote per person, per venture</div>
           <h2>Every venture starts with demand.</h2>
           <p>
-            See problem industries people have suggested, or suggest a problem area you know of.
+            See problem industries people have suggested, or suggest a new one.
           </p>
         </div>
         <div className="vote-grid-site">
