@@ -31,6 +31,10 @@ export default async function FoundingCirclePage() {
         <div className="band-head">
           <div className="band-eyebrow">No card required</div>
           <h2>Help in any way you wish.</h2>
+          <small>
+            It takes people, experience, money, employees and moral support to make each company
+            a success.
+          </small>
         </div>
         <div className="fc-grid">
           <PledgeForm />
