@@ -4,16 +4,16 @@ import { useEffect, useState } from "react";
 
 const QUOTES = [
   {
+    text: "What you do makes a difference, and you have to decide what kind of difference you want to make.",
+    author: "Jane Goodall",
+  },
+  {
     text: "The best way to predict your future is to create it.",
     author: "Abraham Lincoln",
   },
   {
     text: "The future depends on what you do today.",
     author: "Mahatma Gandhi",
-  },
-  {
-    text: "What you do makes a difference, and you have to decide what kind of difference you want to make.",
-    author: "Jane Goodall",
   },
   {
     text: "Tomorrow is created by what you do today, not tomorrow.",
