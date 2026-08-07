@@ -127,10 +127,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .hero-chart-card { background: var(--bg-raised); border: none; border-radius: 20px; padding: 22px; box-shadow: 0 20px 40px rgba(16,40,31,0.28); }
 
 .quote-carousel { display: flex; flex-direction: column; align-items: center; }
-.quote-slides { position: relative; width: 100%; min-height: 200px; }
+.quote-slides { position: relative; width: 100%; min-height: 240px; }
 .quote-slide { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8px 6px; opacity: 0; transition: opacity 0.8s ease; }
 .quote-slide.active { opacity: 1; }
-.quote-slide p { font-family: var(--font-serif); font-style: italic; font-size: 1.12rem; line-height: 1.55; color: var(--ink); margin: 0 0 12px; }
+.quote-slide p { font-family: var(--font-serif); font-style: italic; font-size: 1.5rem; line-height: 1.5; color: var(--ink); margin: 0 0 12px; }
 .quote-slide cite { font-style: normal; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.01em; color: var(--ink-soft); }
 .quote-dots { display: flex; gap: 7px; margin-top: 12px; }
 .quote-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--rule-strong); transition: background 0.3s ease, transform 0.3s ease; }
