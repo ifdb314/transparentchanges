@@ -105,6 +105,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .site-footer-cols a { font-size: 0.86rem; color: var(--ink-soft); }
 .site-footer-cols a:hover { color: var(--accent); }
 .site-footer-legal { max-width: 1160px; margin: 32px auto 0; padding-top: 16px; border-top: 1px solid var(--rule); font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); }
+.ff-credit { display: block; margin-top: 6px; font-size: 0.66rem; color: var(--ink-faint); opacity: 0.75; }
+.ff-credit:hover { color: var(--accent); opacity: 1; }
 
 /* photo hero + band */
 .photo-hero { position: relative; overflow: hidden; padding: 70px 28px; }

@@ -40,6 +40,9 @@ export function SiteFooter() {
       </div>
       <div className="site-footer-legal">
         © {new Date().getFullYear()} TransparentChanges. Every dollar, published every 6 months.
+        <a href="https://www.startwithasite.com" target="_blank" rel="noopener noreferrer" className="ff-credit">
+          Built by StartWithASite.com
+        </a>
       </div>
     </footer>
   );
