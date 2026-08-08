@@ -31,7 +31,7 @@ export function QuoteCarousel() {
   useEffect(() => {
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % QUOTES.length);
-    }, 10000);
+    }, 8000);
     return () => clearInterval(id);
   }, []);
 
