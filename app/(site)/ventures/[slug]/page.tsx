@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { VENTURE_ICONS } from "@/components/Icons";
 import { getVenture, VENTURES } from "@/lib/ventures";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return VENTURES.map((v) => ({ slug: v.slug }));
@@ -16,10 +17,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const venture = getVenture(slug);
   if (!venture) return {};
-  return {
+  return pageMetadata({
     title: venture.name,
     description: venture.cardDescription,
-  };
+    path: `/ventures/${venture.slug}`,
+    image: venture.photo,
+  });
 }
 
 export default async function VenturePage({
@@ -35,13 +38,15 @@ export default async function VenturePage({
 
   return (
     <>
-      <section
-        className="photo-hero"
-        style={{
-          backgroundImage:
-            `linear-gradient(115deg, rgba(16,40,31,0.88) 20%, rgba(60,40,20,0.6) 65%, rgba(90,60,30,0.4) 100%), url('${venture.photo}')`,
-        }}
-      >
+      <section className="photo-hero">
+        <img src={venture.photo} alt={`${venture.name} venture`} className="photo-hero-bg" />
+        <div
+          className="photo-hero-overlay"
+          style={{
+            backgroundImage:
+              "linear-gradient(115deg, rgba(16,40,31,0.88) 20%, rgba(60,40,20,0.6) 65%, rgba(90,60,30,0.4) 100%)",
+          }}
+        />
         <div className="photo-hero-inner" style={{ gridTemplateColumns: "1fr" }}>
           <div>
             <div className="stamp">TransparentChanges {venture.name}</div>

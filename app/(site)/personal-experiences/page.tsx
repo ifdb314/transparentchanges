@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "My Personal Experiences",
   description: "A founder's note on the experiences that led to TransparentChanges.",
-  robots: { index: false, follow: false },
-};
+  path: "/personal-experiences",
+  index: false,
+  follow: false,
+});
 
 export default function PersonalExperiencesPage() {
   return (

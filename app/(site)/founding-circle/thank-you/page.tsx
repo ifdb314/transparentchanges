@@ -1,16 +1,17 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { FoundingCircleDisplay } from "@/components/FoundingCircleDisplay";
 import { ShareWidget } from "@/components/ShareWidget";
 import { getFoundingCircleData } from "@/lib/foundingCircle";
+import { pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Thank You",
   description: "Thank you for joining the Founding Circle.",
-  robots: { index: false, follow: true },
-};
+  path: "/founding-circle/thank-you",
+  index: false,
+});
 
 export default async function FoundingCircleThankYouPage() {
   const data = await getFoundingCircleData();

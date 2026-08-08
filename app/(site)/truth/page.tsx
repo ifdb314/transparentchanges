@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Truth You Don't Know",
   description:
     "Sourced, dated, screenshot-sized facts — what the biggest players in each industry, and the economy at large, don't put on the receipt.",
-};
+  path: "/truth",
+  image: "/images/overworked.jpg",
+});
 
 const BY_INDUSTRY = [
   {
@@ -75,13 +77,16 @@ const BIGGER_PICTURE = [
 export default function TruthPage() {
   return (
     <>
-      <div
-        className="photo-band"
-        style={{
-          backgroundImage:
-            "linear-gradient(180deg, rgba(16,40,31,0.1), rgba(16,40,31,0.8)), url('/images/overworked.jpg')",
-        }}
-      >
+      <div className="photo-band">
+        <img
+          src="/images/overworked.jpg"
+          alt="An overworked person at a desk, illustrating the toll of industries that don't put people first"
+          className="photo-band-bg"
+        />
+        <div
+          className="photo-band-overlay"
+          style={{ backgroundImage: "linear-gradient(180deg, rgba(16,40,31,0.1), rgba(16,40,31,0.8))" }}
+        />
         <div className="photo-band-text">
           <p>These numbers affect real people.</p>
         </div>

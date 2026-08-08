@@ -107,7 +107,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .site-footer-legal { max-width: 1160px; margin: 32px auto 0; padding-top: 16px; border-top: 1px solid var(--rule); font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); }
 
 /* photo hero + band */
-.photo-hero { position: relative; overflow: hidden; padding: 70px 28px; background-size: cover; background-position: center; }
+.photo-hero { position: relative; overflow: hidden; padding: 70px 28px; }
+.photo-hero-bg, .photo-band-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.photo-hero-overlay, .photo-band-overlay { position: absolute; inset: 0; z-index: 1; }
 .photo-hero-inner { position: relative; z-index: 2; max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 44px; align-items: start; }
 @media (max-width: 860px) { .photo-hero-inner { grid-template-columns: 1fr; } .photo-hero { padding: 48px 20px; } }
 .photo-hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.03; margin-top: 16px; max-width: 16ch; color: #FFF9F0; }
@@ -119,7 +121,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .photo-hero .hero-stats div { font-family: var(--font-body); font-size: 0.78rem; color: rgba(255,249,240,0.75); }
 .photo-hero .hero-stats b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; color: #FFF9F0; font-variant-numeric: tabular-nums; }
 
-.photo-band { position: relative; height: 220px; background-size: cover; background-position: center; display: flex; align-items: flex-end; }
+.photo-band { position: relative; height: 220px; overflow: hidden; display: flex; align-items: flex-end; }
 .photo-band-text { position: relative; z-index: 2; max-width: 1160px; margin: 0 auto; padding: 0 28px 26px; width: 100%; }
 .photo-band-text p { color: #FFF9F0; font-family: var(--font-serif); font-style: italic; font-size: 1.2rem; max-width: 40ch; }
 .photo-band-text small { display: block; margin-top: 8px; color: rgba(255,249,240,0.78); font-family: var(--font-body); font-style: normal; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
@@ -173,7 +175,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .venture-grid-site { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
 .vcard { border: none; border-radius: 20px; background: var(--bg-raised); display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 12px 28px rgba(16,40,31,0.14); transition: transform 0.15s ease; }
 .vcard:hover { transform: translateY(-3px); }
-.vcard-photo { height: 150px; background-size: cover; background-position: center; position: relative; }
+.vcard-photo { height: 150px; position: relative; }
+.vcard-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .vcard-photo .icon-tile { position: absolute; left: 16px; bottom: -20px; }
 .vcard-body { padding: 30px 18px 18px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1; }
 .icon-tile { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--accent); border: 3px solid var(--bg-raised); box-shadow: 0 4px 10px rgba(0,0,0,0.22); }
@@ -333,7 +336,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .vote-grid-site { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px,1fr)); gap: 16px; }
 .vote-card-site { border: none; border-radius: 20px; background: var(--bg-raised); display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 10px 24px rgba(16,40,31,0.1); }
 .vote-card-site.submitted { box-shadow: none; border: 1.5px dashed var(--rule-strong); }
-.vote-photo { height: 130px; background-size: cover; background-position: center; }
+.vote-photo { display: block; width: 100%; height: 130px; object-fit: cover; }
 .vote-photo-placeholder { height: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; background: linear-gradient(135deg, var(--forest), var(--forest-soft)); }
 .vote-photo-placeholder .name { font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; color: #fff; text-align: center; padding: 0 14px; }
 .vote-photo-placeholder .state { font-family: var(--font-body); font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold); background: rgba(0,0,0,0.2); padding: 3px 10px; border-radius: 999px; }

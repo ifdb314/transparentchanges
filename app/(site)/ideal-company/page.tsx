@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Ideal Company",
   description:
     "Not a mission statement — a checklist. The standard every TransparentChanges venture is measured against.",
-};
+  path: "/ideal-company",
+  image: "/images/family.jpg",
+});
 
 const TENETS = [
   {
@@ -61,14 +63,19 @@ const TENETS = [
 export default function IdealCompanyPage() {
   return (
     <>
-      <section
-        className="photo-hero"
-        style={{
-          paddingTop: 56,
-          backgroundImage:
-            "linear-gradient(115deg, rgba(16,40,31,0.88) 20%, rgba(60,40,20,0.62) 65%, rgba(90,60,30,0.45) 100%), url('/images/family.jpg')",
-        }}
-      >
+      <section className="photo-hero" style={{ paddingTop: 56 }}>
+        <img
+          src="/images/family.jpg"
+          alt="A family together, representing the life-first workplace TransparentChanges is building toward"
+          className="photo-hero-bg"
+        />
+        <div
+          className="photo-hero-overlay"
+          style={{
+            backgroundImage:
+              "linear-gradient(115deg, rgba(16,40,31,0.88) 20%, rgba(60,40,20,0.62) 65%, rgba(90,60,30,0.45) 100%)",
+          }}
+        />
         <div className="photo-hero-inner" style={{ gridTemplateColumns: "1fr" }}>
           <div>
             <div className="stamp">Not a mission statement — a checklist</div>

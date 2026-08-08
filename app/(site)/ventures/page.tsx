@@ -1,15 +1,17 @@
-import type { Metadata } from "next";
 import { UpvoteButton } from "@/components/UpvoteButton";
 import { SuggestForm } from "@/components/SuggestForm";
 import { VENTURES } from "@/lib/ventures";
 import { supabaseAdmin } from "@/lib/supabase";
+import { pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Ventures",
   description: "Vote for what we change next — one vote per person, per venture.",
-};
+  path: "/ventures",
+  image: "/images/produce.jpg",
+});
 
 export default async function VenturesPage() {
   const supabase = supabaseAdmin();
@@ -29,13 +31,12 @@ export default async function VenturesPage() {
 
   return (
     <>
-      <div
-        className="photo-band"
-        style={{
-          backgroundImage:
-            "linear-gradient(180deg, rgba(16,40,31,0.1), rgba(16,40,31,0.8)), url('/images/produce.jpg')",
-        }}
-      >
+      <div className="photo-band">
+        <img src="/images/produce.jpg" alt="Fresh produce, representing the industries TransparentChanges ventures into" className="photo-band-bg" />
+        <div
+          className="photo-band-overlay"
+          style={{ backgroundImage: "linear-gradient(180deg, rgba(16,40,31,0.1), rgba(16,40,31,0.8))" }}
+        />
         <div className="photo-band-text">
           <p>Vote for what we change next.</p>
           <small>Every venture starts with demand.</small>
@@ -53,7 +54,7 @@ export default async function VenturesPage() {
         <div className="vote-grid-site">
           {sortedVentures.map((v) => (
             <div className="vote-card-site" key={v.slug}>
-              <div className="vote-photo" style={{ backgroundImage: `url('${v.photo}')` }} />
+              <img src={v.photo} alt={`${v.name} venture`} className="vote-photo" />
               <div className="vote-body">
                 <h3>{v.name}</h3>
                 <p>{v.cardDescription}</p>

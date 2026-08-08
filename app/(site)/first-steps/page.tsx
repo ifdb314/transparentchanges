@@ -1,22 +1,23 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { LedgerBar, LedgerLegend } from "@/components/LedgerBar";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "First Steps",
   description: "Where every dollar goes — updated every 6 months, down to the management pay ratio.",
-};
+  path: "/first-steps",
+  image: "/images/team.jpg",
+});
 
 export default function FirstStepsPage() {
   return (
     <>
-      <div
-        className="photo-band"
-        style={{
-          backgroundImage:
-            "linear-gradient(180deg, rgba(16,40,31,0.1), rgba(16,40,31,0.8)), url('/images/team.jpg')",
-        }}
-      >
+      <div className="photo-band">
+        <img src="/images/team.jpg" alt="The team behind TransparentChanges" className="photo-band-bg" />
+        <div
+          className="photo-band-overlay"
+          style={{ backgroundImage: "linear-gradient(180deg, rgba(16,40,31,0.1), rgba(16,40,31,0.8))" }}
+        />
         <div className="photo-band-text">
           <p>Every number here impacts a real person — and we work to make that impact a positive one.</p>
         </div>

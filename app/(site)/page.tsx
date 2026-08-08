@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { QuoteCarousel } from "@/components/QuoteCarousel";
 import { VENTURE_ICONS } from "@/components/Icons";
@@ -5,6 +6,10 @@ import { VENTURES } from "@/lib/ventures";
 import { getFoundingCircleData, initialsFromName, colorForName } from "@/lib/foundingCircle";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default async function HomePage() {
   const data = await getFoundingCircleData();
@@ -17,13 +22,19 @@ export default async function HomePage() {
 
   return (
     <>
-      <section
-        className="photo-hero"
-        style={{
-          backgroundImage:
-            "linear-gradient(115deg, rgba(16,40,31,0.90) 15%, rgba(110,46,28,0.68) 60%, rgba(60,30,18,0.55) 100%), url('/images/hero_hands.jpg')",
-        }}
-      >
+      <section className="photo-hero">
+        <img
+          src="/images/hero_hands.jpg"
+          alt="Two people clasping hands in a moment of trust and connection"
+          className="photo-hero-bg"
+        />
+        <div
+          className="photo-hero-overlay"
+          style={{
+            backgroundImage:
+              "linear-gradient(115deg, rgba(16,40,31,0.90) 15%, rgba(110,46,28,0.68) 60%, rgba(60,30,18,0.55) 100%)",
+          }}
+        />
         <div className="photo-hero-inner">
           <div>
             <div className="stamp">Founding phase — We need you!</div>
@@ -112,10 +123,8 @@ export default async function HomePage() {
             const Icon = VENTURE_ICONS[v.icon];
             return (
               <Link href={`/ventures/${v.slug}`} className="vcard" key={v.slug}>
-                <div
-                  className="vcard-photo"
-                  style={{ backgroundImage: `url('${v.photo}')` }}
-                >
+                <div className="vcard-photo">
+                  <img src={v.photo} alt={`${v.name} venture`} />
                   <div className="icon-tile">
                     <Icon />
                   </div>
