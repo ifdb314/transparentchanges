@@ -15,24 +15,24 @@ const TENETS = [
     body: "Remote-first wherever the work allows it, a 30–32 hour week, and three real days for family — so people aren't just working to live, they're living. Life first motto.",
   },
   {
-    title: "Fair prices, real quality",
-    body: "A product or service priced fairly and as low as it can honestly go — without cutting the quality or service customers deserve. We show customers what it costs us, what they're paying, and where the difference is going.",
+    title: "Job security you can actually feel",
+    body: "Loyalty goes both ways. The quiet fear of losing your job for no good reason is something we're actively trying to eliminate — and coworkers stay because they share the same purpose, not just a paycheck.",
   },
   {
     title: "100% of employees doing 100% of the work",
     body: "Layoffs are avoided by design — not 20% of employees carrying the other 80%, and never leadership bonuses funded by headcount cuts.",
   },
   {
-    title: "Employees are family, and everyone's in the know",
-    body: "Every employee is cared for like family, not a line item — and employees and the public alike know what the company is doing and how it's doing.",
+    title: "Making a difference",
+    body: "Every company has a mission to make a real difference — bettering the world in some way, not just making money or turning a profit. Every venture exists to build a better, more sustainable future. Period.",
   },
   {
     title: "Leaders work alongside their people",
     body: "Real servant leadership means managers get their hands dirty next to their employees, not just pushing paper from above.",
   },
   {
-    title: "Bad managers don't get protected",
-    body: "When a hire isn't working out, or a manager plays favorites instead of leading, they're held accountable — they yield to the consequences of their actions. Titles are never a shield.",
+    title: "Profit that builds the next thing",
+    body: "Profit flows back into the community — ideally into starting the next venture that creates opportunities for people, not just into a buyback.",
   },
   {
     title: "Good customers are cherished",
@@ -43,20 +43,20 @@ const TENETS = [
     body: "The most qualified person gets the job — not the one who fits a quota. Everyone is equal, and hard work, honesty and sincerity beat politics and favoritism, every time.",
   },
   {
-    title: "Profit that builds the next thing",
-    body: "Profit flows back into the community — ideally into starting the next venture that creates opportunities for people, not just into a buyback. Every venture is mindful of its environmental footprint.",
+    title: "Bad managers don't get protected",
+    body: "When a hire isn't working out, or a manager plays favorites instead of leading, they're held accountable — they yield to the consequences of their actions. Titles are never a shield.",
   },
   {
     title: "Technology that adds, not replaces",
     body: "AI is used to help people do more — not as an excuse to replace the person already doing the job. Human lives depend on their living — that must never be forgotten.",
   },
   {
-    title: "Job security you can actually feel",
-    body: "Loyalty goes both ways. The quiet fear of losing your job for no good reason is something we're actively trying to eliminate — and coworkers stay because they share the same purpose, not just a paycheck.",
+    title: "Fair prices, real quality",
+    body: "A product or service priced fairly and as low as it can honestly go — without cutting the quality or service customers deserve. We show customers what it costs us, what they're paying, and where the difference is going.",
   },
   {
-    title: "Making a difference",
-    body: "Every company has a mission to make a real difference — bettering the world in some way, not just making money or turning a profit. Every venture exists to build a better, more sustainable future. Period.",
+    title: "Employees are family, and everyone's in the know",
+    body: "Every employee is cared for like family, not a line item — and employees and the public alike know what the company is doing and how it's doing.",
   },
 ];
 
