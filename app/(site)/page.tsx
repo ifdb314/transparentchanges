@@ -50,7 +50,7 @@ export default async function HomePage() {
             </p>
             <div className="hero-cta-row">
               <Link href="/founding-circle" className="btn">
-                Join the Founding Circle
+                Join our Mission
               </Link>
               <Link href="/founding-circle" className="btn ghost">
                 See how you can help →
@@ -104,7 +104,7 @@ export default async function HomePage() {
         </p>
         <div className="hero-cta-row" style={{ marginTop: 22 }}>
           <Link href="/founding-circle" className="btn">
-            Join the Founding Circle
+            Join our Mission
           </Link>
         </div>
       </section>
@@ -237,7 +237,7 @@ export default async function HomePage() {
         <div className="cta-band-inner">
           <h2>Help build a better future.</h2>
           <Link href="/founding-circle" className="btn">
-            Join the Founding Circle
+            Join our Mission
           </Link>
         </div>
       </section>

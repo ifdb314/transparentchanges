@@ -48,27 +48,35 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  const amountCents = pledgeType === "money" && amount ? Math.round(amount * 100) : null;
+
+  // Best-effort — if Supabase is having an outage, the email (sent below regardless)
+  // is the fallback record of this submission, so a DB failure shouldn't block the
+  // pledge or leave the person with nothing to show for it.
   const supabase = supabaseAdmin();
   const { error } = await supabase.from("founding_circle_entries").insert({
     pledge_type: pledgeType,
     name,
     location,
     email,
-    amount_cents: pledgeType === "money" && amount ? Math.round(amount * 100) : null,
+    amount_cents: amountCents,
     help_text: helpText,
     source_page: request.headers.get("referer") || null,
     user_agent: request.headers.get("user-agent") || null,
   });
 
   if (error) {
-    console.error("founding_circle_entries insert failed", error);
-    return NextResponse.json(
-      { error: "Something went wrong saving your pledge. Please try again." },
-      { status: 500 }
-    );
+    console.error("founding_circle_entries insert failed — continuing, email is the fallback record", error);
   }
 
-  await sendFoundingCirclePledgeEmail(name, email);
+  await sendFoundingCirclePledgeEmail({
+    name,
+    email,
+    location,
+    pledgeType,
+    amountCents,
+    helpText,
+  });
 
   return NextResponse.json({ ok: true });
 }

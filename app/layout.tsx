@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "TransparentChanges — Help build a better future, from the ground up.",
     description:
-      "Companies that publish their receipts and put employees and customers first. Join the Founding Circle — $0 required.",
+      "Companies that publish their receipts and put employees and customers first. Join our Mission — $0 required.",
     url: siteUrl,
     siteName: "TransparentChanges",
     images: [{ url: "/images/hero_hands.jpg", width: 1000, height: 667 }],

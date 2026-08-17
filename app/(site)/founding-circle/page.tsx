@@ -28,7 +28,12 @@ export default async function FoundingCirclePage() {
           style={{ backgroundImage: "linear-gradient(180deg, rgba(16,40,31,0.1), rgba(16,40,31,0.8))" }}
         />
         <div className="photo-band-text">
-          <p>Every name here is someone who said yes.</p>
+          <p>
+            Our mission is to build &quot;ideal&quot; companies one at a time that make working a
+            pleasure, providing to the community a priority, improving our planet a must, and
+            that promote honesty and transparency for all as the defacto standard.
+          </p>
+          <small>*Every name here is someone who said yes.</small>
         </div>
       </div>
 
@@ -37,8 +42,8 @@ export default async function FoundingCirclePage() {
           <div className="band-eyebrow">No card required</div>
           <h2>Help in any way you wish.</h2>
           <small>
-            It takes people, experience, money, employees and moral support to make each company
-            a success.
+            It takes people, experience, money, support from the community, and more to make each
+            company a success.
           </small>
         </div>
         <div className="fc-grid">

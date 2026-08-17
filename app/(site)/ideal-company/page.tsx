@@ -107,7 +107,7 @@ export default function IdealCompanyPage() {
         <div className="cta-band-inner">
           <h2>Help us hold every venture to this.</h2>
           <Link href="/founding-circle" className="btn">
-            Join the Founding Circle
+            Join our Mission
           </Link>
         </div>
       </section>

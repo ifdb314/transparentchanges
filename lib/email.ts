@@ -1,8 +1,33 @@
 import { createHmac } from "crypto";
 import { supabaseAdmin } from "@/lib/supabase";
+import { US_STATES } from "@/lib/usStates";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://transparentchanges.com";
 const FROM_ADDRESS = "TransparentChanges <info@transparentchanges.com>";
+
+const PLEDGE_TYPE_LABELS: Record<string, string> = {
+  money: "Pledge money",
+  word: "Spread the word",
+  volunteer: "Volunteer to help",
+  employee: "Offer to be an employee",
+};
+
+function stateName(code: string): string {
+  return US_STATES.find((s) => s.code === code)?.name || code;
+}
+
+function nl2br(input: string): string {
+  return escapeHtml(input).replace(/\n/g, "<br/>");
+}
+
+export type PledgeSubmission = {
+  name: string;
+  email: string;
+  location: string;
+  pledgeType: string;
+  amountCents: number | null;
+  helpText: string | null;
+};
 
 const SOCIAL_LINKS = [
   { icon: "instagram", label: "Instagram", href: "https://www.instagram.com/" },
@@ -69,9 +94,34 @@ function socialIconsHtml(): string {
   return `<div style="text-align:center;margin-top:8px;">${cells}</div>`;
 }
 
-function foundingCircleThankYouHtml(name: string, email: string): string {
-  const safeName = escapeHtml(name);
-  const unsubscribe = unsubscribeUrl(email);
+function submissionDetailsHtml(sub: PledgeSubmission): string {
+  const rows = [
+    `<tr><td style="padding:5px 0;color:#5B4D3F;">State</td><td style="padding:5px 0;text-align:right;font-weight:600;color:#1F160F;">${escapeHtml(stateName(sub.location))}</td></tr>`,
+    `<tr><td style="padding:5px 0;color:#5B4D3F;">How they chose to help</td><td style="padding:5px 0;text-align:right;font-weight:600;color:#1F160F;">${escapeHtml(PLEDGE_TYPE_LABELS[sub.pledgeType] || sub.pledgeType)}</td></tr>`,
+  ];
+  if (sub.pledgeType === "money" && sub.amountCents) {
+    rows.push(
+      `<tr><td style="padding:5px 0;color:#5B4D3F;">Amount pledged</td><td style="padding:5px 0;text-align:right;font-weight:600;color:#1F160F;">$${(sub.amountCents / 100).toFixed(2)}</td></tr>`
+    );
+  }
+
+  const helpTextBlock = sub.helpText
+    ? `<p style="margin:14px 0 0;font-size:14px;line-height:1.55;color:#1F160F;"><strong>How they can help:</strong><br/>${nl2br(sub.helpText)}</p>`
+    : "";
+
+  return `
+    <div style="margin:20px 0 0;padding:16px 18px;background:#FDF3E4;border-radius:12px;">
+      <p style="margin:0 0 8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#8A7A6A;">Submission details</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;">
+        ${rows.join("")}
+      </table>
+      ${helpTextBlock}
+    </div>`;
+}
+
+function foundingCircleThankYouHtml(sub: PledgeSubmission): string {
+  const safeName = escapeHtml(sub.name);
+  const unsubscribe = unsubscribeUrl(sub.email);
   return `<!doctype html>
 <html>
   <body style="margin:0;padding:0;background:#FDF3E4;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
@@ -107,6 +157,7 @@ function foundingCircleThankYouHtml(name: string, email: string): string {
                 <p style="margin:24px 0 0;font-size:16px;line-height:1.65;color:#1F160F;font-weight:700;">
                   Thank you again from the bottom of our hearts.
                 </p>
+                ${submissionDetailsHtml(sub)}
                 <p style="margin:20px 0 28px;font-size:16px;line-height:1.5;color:#1F160F;">
                   Sincerely,<br />All of us who believe in TransparentChanges&rsquo; mission
                 </p>
@@ -134,15 +185,17 @@ function foundingCircleThankYouHtml(name: string, email: string): string {
 </html>`;
 }
 
-/** Best-effort — a failed email should never block or fail the pledge itself. */
-export async function sendFoundingCirclePledgeEmail(name: string, email: string) {
+/** Best-effort — a failed email should never block or fail the pledge itself. This is
+ *  also the fallback record of a submission if the Supabase write failed, so it always
+ *  fires regardless of whether the DB insert succeeded. */
+export async function sendFoundingCirclePledgeEmail(sub: PledgeSubmission) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return;
 
   try {
-    if (await isSuppressed(email)) return;
+    if (await isSuppressed(sub.email)) return;
 
-    const unsubscribe = unsubscribeUrl(email);
+    const unsubscribe = unsubscribeUrl(sub.email);
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -151,11 +204,12 @@ export async function sendFoundingCirclePledgeEmail(name: string, email: string)
       },
       body: JSON.stringify({
         from: FROM_ADDRESS,
-        to: [email],
+        to: [sub.email],
+        cc: ["info@transparentchanges.com"],
         bcc: ["transittrack@gmail.com"],
         reply_to: "info@transparentchanges.com",
         subject: "TransparentChanges - Thank you for your contribution!",
-        html: foundingCircleThankYouHtml(name, email),
+        html: foundingCircleThankYouHtml(sub),
         headers: {
           "List-Unsubscribe": `<${unsubscribe}>`,
           "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",

@@ -160,7 +160,7 @@ export function PledgeForm() {
       {status === "error" && <div className="fc-note error">{errorMessage}</div>}
 
       <button type="submit" className="btn" disabled={status === "submitting"} style={{ justifySelf: "start" }}>
-        {status === "submitting" ? "Joining…" : "Join the Founding Circle"}
+        {status === "submitting" ? "Joining…" : "Join our Mission"}
       </button>
 
       <div className="share-section">

@@ -65,7 +65,7 @@ export default async function VenturePage({
         ))}
         <p style={{ marginTop: 22 }}>{venture.closing}</p>
         <Link href="/founding-circle" className="btn" style={{ marginTop: 20, display: "inline-block" }}>
-          Join the Founding Circle
+          Join our Mission
         </Link>
       </section>
 

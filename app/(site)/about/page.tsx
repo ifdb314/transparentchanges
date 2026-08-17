@@ -28,7 +28,7 @@ export default function AboutPage() {
       </p>
       <div className="about-sign">— Justin</div>
       <Link href="/founding-circle" className="btn" style={{ marginTop: 30, display: "inline-block" }}>
-        Join the Founding Circle
+        Join our Mission
       </Link>
       <br />
       <Link href="/personal-experiences" className="about-quiet-link">

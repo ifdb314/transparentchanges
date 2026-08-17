@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { href: "/ideal-company", label: "Ideal Company" },
   { href: "/truth", label: "Truth" },
   { href: "/ventures", label: "Ventures" },
-  { href: "/founding-circle", label: "Founding Circle" },
+  { href: "/founding-circle", label: "The Mission" },
   { href: "/about", label: "About" },
 ];
 

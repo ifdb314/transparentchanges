@@ -123,9 +123,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .photo-hero .hero-stats div { font-family: var(--font-body); font-size: 0.78rem; color: rgba(255,249,240,0.75); }
 .photo-hero .hero-stats b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; color: #FFF9F0; font-variant-numeric: tabular-nums; }
 
-.photo-band { position: relative; height: 220px; overflow: hidden; display: flex; align-items: flex-end; }
-.photo-band-text { position: relative; z-index: 2; max-width: 1160px; margin: 0 auto; padding: 0 28px 26px; width: 100%; }
-.photo-band-text p { color: #FFF9F0; font-family: var(--font-serif); font-style: italic; font-size: 1.2rem; max-width: 40ch; }
+.photo-band { position: relative; min-height: 220px; display: flex; align-items: flex-end; }
+.photo-band-text { position: relative; z-index: 2; max-width: 1160px; margin: 0 auto; padding: 20px 28px 26px; width: 100%; }
+.photo-band-text p { color: #FFF9F0; font-family: var(--font-serif); font-style: italic; font-size: 1.2rem; max-width: 60ch; }
 .photo-band-text small { display: block; margin-top: 8px; color: rgba(255,249,240,0.78); font-family: var(--font-body); font-style: normal; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
 
 .hero-chart-card { background: var(--bg-raised); border: none; border-radius: 20px; padding: 22px; box-shadow: 0 20px 40px rgba(16,40,31,0.28); }
