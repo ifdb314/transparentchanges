@@ -193,7 +193,7 @@ export default async function HomePage() {
             <ul>
               <li>Every sale, every cost, every dollar is listed and published</li>
               <li>Manager pay is capped at 2× their lowest-paid direct report</li>
-              <li>First Steps is the values page — updated every 6 months</li>
+              <li>What&apos;s Next is the values page — updated every 6 months</li>
               <li>Leadership pay moves before headcount does</li>
             </ul>
           </div>

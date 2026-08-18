@@ -26,8 +26,8 @@ export function SiteFooter() {
           </div>
           <div>
             <span className="ff-h">Transparency</span>
-            <Link href="/first-steps">First Steps</Link>
-            <Link href="/truth">Truth</Link>
+            <Link href="/first-steps">What&apos;s Next</Link>
+            <Link href="/truth">Truths</Link>
             <Link href="/founding-circle">The Mission</Link>
           </div>
           <div>

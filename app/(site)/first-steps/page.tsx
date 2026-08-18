@@ -19,9 +19,64 @@ export default function FirstStepsPage() {
           style={{ backgroundImage: "linear-gradient(180deg, rgba(16,40,31,0.1), rgba(16,40,31,0.8))" }}
         />
         <div className="photo-band-text">
-          <p>Every number here impacts a real person — and we work to make that impact a positive one.</p>
+          <p>Are you tired of hoping for change? Let&apos;s stop wishing and start doing.</p>
+          <small>Doing something — that&apos;s what&apos;s next.</small>
         </div>
       </div>
+
+      <section className="band">
+        <div className="band-head">
+          <div className="band-eyebrow">The process</div>
+          <h2>Here&apos;s what&apos;s coming next.</h2>
+        </div>
+        <div className="process-list">
+          <div className="process-step">
+            <div className="process-num">1</div>
+            <div className="process-body">
+              <h3>Gather a vast pool of people and resources to make a difference.</h3>
+              <p>Spread the word — the more people there are, the easier and more successful this will be.</p>
+            </div>
+          </div>
+          <div className="process-step">
+            <div className="process-num">2</div>
+            <div className="process-body">
+              <h3>Choose a venture or a company to build and improve.</h3>
+              <p>Put thoughts and planning into actions and deeds.</p>
+            </div>
+          </div>
+          <div className="process-step">
+            <div className="process-num">3</div>
+            <div className="process-body">
+              <h3>Start the venture with the right team, the right people, the right way — from the ground up, following the Ideal Company playbook.</h3>
+              <p>Take the hardest step: making the effort against an industry set in old ways.</p>
+            </div>
+          </div>
+          <div className="process-step">
+            <div className="process-num">4</div>
+            <div className="process-body">
+              <h3>Put the ideals into practice.</h3>
+              <p>
+                Profits to employees, savings to customers, happiness to both, and a positive
+                impact on the community and the world around it. Success is a company everyone
+                wants to work for, customers want to buy from, and that makes the world a little
+                better with each passing day.
+              </p>
+            </div>
+          </div>
+          <div className="process-step">
+            <div className="process-num">5</div>
+            <div className="process-body">
+              <h3>Use successes to change other industries and spread the positive change.</h3>
+              <p>Create a change that spreads — that heals the broken world we&apos;ve all just accepted.</p>
+            </div>
+          </div>
+        </div>
+        <div style={{ marginTop: 32 }}>
+          <Link href="/founding-circle" className="btn">
+            Join our Mission
+          </Link>
+        </div>
+      </section>
 
       <section className="band" style={{ paddingBottom: 0 }}>
         <div className="band-head">

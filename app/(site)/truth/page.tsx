@@ -34,6 +34,21 @@ const BY_INDUSTRY = [
     body: "New homeowners who ran into at least one major repair issue within their first year in the home.",
     src: "American Home Shield survey, 2024",
   },
+  {
+    stat: "224%",
+    body: "What U.S. hospitals charged private insurers in 2022, on average, for the exact same care Medicare would have paid for at 100%.",
+    src: "RAND Hospital Price Transparency Study, 2022",
+  },
+  {
+    stat: "30×+",
+    body: "How many times more a vial of insulin sells for in the U.S. than it actually costs to manufacture.",
+    src: "RAND Corporation, insulin cost study, 2020",
+  },
+  {
+    stat: "5–10×",
+    body: "The typical markup on a mattress from factory cost to sticker price — one of the widest margins in retail.",
+    src: "Mattress industry pricing reports",
+  },
 ];
 
 const BIGGER_PICTURE = [
@@ -72,6 +87,11 @@ const BIGGER_PICTURE = [
     body: "OECD and EU nations with no mandated paid parental leave: the United States is the only one.",
     src: "Pew Research",
   },
+  {
+    stat: "$500+",
+    body: "Estimated extra a law-abiding household pays every year in higher retail prices to cover the cost of theft and shrink.",
+    src: "National Retail Federation estimates",
+  },
 ];
 
 export default function TruthPage() {
@@ -88,7 +108,11 @@ export default function TruthPage() {
           style={{ backgroundImage: "linear-gradient(180deg, rgba(16,40,31,0.1), rgba(16,40,31,0.8))" }}
         />
         <div className="photo-band-text">
-          <p>These numbers affect real people.</p>
+          <p>
+            What if you really knew the truths behind businesses? Would you still support and use
+            them? Let&apos;s make truth a requirement, not a nice-to-have.
+          </p>
+          <small>These numbers affect real people.</small>
         </div>
       </div>
 

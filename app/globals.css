@@ -250,6 +250,17 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .cta-band h2 { color: #FFF9F0; font-size: clamp(1.6rem, 3vw, 2.2rem); max-width: 18ch; }
 .cta-band .btn { background: var(--accent); }
 
+/* process steps */
+.process-list { display: flex; flex-direction: column; max-width: 700px; }
+.process-step { display: flex; gap: 20px; position: relative; padding-bottom: 34px; }
+.process-step:last-child { padding-bottom: 0; }
+.process-step::before { content: ""; position: absolute; left: 21px; top: 44px; bottom: 4px; width: 2px; background: var(--rule-strong); }
+.process-step:last-child::before { display: none; }
+.process-num { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--forest); color: var(--gold); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; z-index: 1; }
+.process-body { padding-top: 8px; }
+.process-body h3 { font-size: 1.08rem; line-height: 1.32; margin-bottom: 6px; }
+.process-body p { font-size: 0.9rem; color: var(--ink-soft); }
+
 /* ledger details */
 .ledger-cat { border: none; border-bottom: 1px dashed var(--rule); }
 .ledger-cat summary { list-style: none; cursor: pointer; position: relative; display: flex; justify-content: space-between; gap: 10px; padding: 14px 0 14px 22px; font-size: 0.96rem; }

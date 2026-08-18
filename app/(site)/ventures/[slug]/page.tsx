@@ -75,7 +75,7 @@ export default async function VenturePage({
           <p style={{ margin: 0 }}>
             Every venture publishes its own ledger once it launches — the same standard shown in{" "}
             <Link href="/first-steps" style={{ color: "var(--accent)" }}>
-              First Steps
+              What&apos;s Next
             </Link>
             .
           </p>

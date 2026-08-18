@@ -38,7 +38,7 @@ export default async function VenturesPage() {
           style={{ backgroundImage: "linear-gradient(180deg, rgba(16,40,31,0.1), rgba(16,40,31,0.8))" }}
         />
         <div className="photo-band-text">
-          <p>Vote for what we change next.</p>
+          <p>Tell us what needs to change so that we can fix the most in-demand areas first.</p>
           <small>Every venture starts with demand.</small>
         </div>
       </div>
@@ -46,7 +46,7 @@ export default async function VenturesPage() {
       <section className="band">
         <div className="band-head">
           <div className="band-eyebrow">One vote per person, per venture</div>
-          <h2>Every venture starts with demand.</h2>
+          <h2>Vote for what we change next.</h2>
           <p>
             See problem industries people have suggested, or suggest a new one.
           </p>

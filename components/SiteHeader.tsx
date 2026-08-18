@@ -5,9 +5,9 @@ import Link from "next/link";
 import { LogoMark } from "./Icons";
 
 const NAV_LINKS = [
-  { href: "/first-steps", label: "First Steps" },
+  { href: "/first-steps", label: "What's Next" },
   { href: "/ideal-company", label: "Ideal Company" },
-  { href: "/truth", label: "Truth" },
+  { href: "/truth", label: "Truths" },
   { href: "/ventures", label: "Ventures" },
   { href: "/founding-circle", label: "The Mission" },
   { href: "/about", label: "About" },

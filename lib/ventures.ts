@@ -17,7 +17,7 @@ export const VENTURES: Venture[] = [
     icon: "rides",
     photo: "/images/driver.jpg",
     cardDescription:
-      "The driver's cut is fixed, published, and the majority share — every quarter. See what you pay and how it's used.",
+      "The driver's cut is published, and the majority share. Drivers should be paid better. Customers shouldn't be funding the billions in profits some of these companies are making. See what you pay and how it's used.",
     headline: "Don't take a cut you can't see.",
     intro:
       "Uber's take rate climbed from 32% to 42%+ between 2022 and 2024 — then it stopped disclosing the number. Ours is published, fixed, and the driver keeps the majority every quarter.",
@@ -125,7 +125,7 @@ export const VENTURES: Venture[] = [
     icon: "website",
     photo: "/images/website-builder.jpg",
     cardDescription:
-      "Every step, cost, and markup published up front — so you know exactly what's involved and what to expect as you go. See what you pay and how it's used.",
+      "Every step, cost, and markup published up front — so you know exactly what's involved and what to expect as you go. Every business should be able to have a cost effective website presence. See what you pay and how it's used.",
     headline: "Know every step before you start.",
     intro:
       "A professional agency site commonly starts at $6,000 and climbs past $35,000, and freelancers can come with hidden recurring fees or lock your site into a system you don't actually own and can't take with you. For a lot of first-time owners, jumping straight to \"just use AI\" is its own wall to climb. We lay out every step so you know what's involved, what it costs, and what to expect as you go.",
@@ -143,7 +143,7 @@ export const VENTURES: Venture[] = [
     icon: "credit-cards",
     photo: "/images/credit-cards.jpg",
     cardDescription:
-      "A card built to keep you out of debt, not into it — with smaller fees that merchants can expect, plan for, and understand, passing the savings on to you, the customer, on every purchase. See what you pay and how it's used.",
+      "A card built to keep you out of debt, not into it — with smaller fees that merchants can pass the savings on to you (estimated savings could be $800/year). Imagine changing nothing else and having $800 more a year. See what you pay and how it's used.",
     headline: "A credit card that isn't trying to get you into debt.",
     intro:
       "Visa alone reported $40 billion in revenue last year, funded largely by transaction fees that merchants pass straight into the price of everything you buy. Meanwhile Americans now carry $1.25 trillion in credit card debt at an average interest rate near 21% — and every card on the market is designed to encourage more spending, not less. Ours is built backwards from that: lower, flatter transaction fees that bring everyday prices down, and a card whose whole design is to keep you spending wisely, not maximize what you owe.",
