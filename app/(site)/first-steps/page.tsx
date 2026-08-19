@@ -78,6 +78,136 @@ export default function FirstStepsPage() {
         </div>
       </section>
 
+      <section className="band">
+        <div className="band-head">
+          <div className="band-eyebrow">The reasoning</div>
+          <h2>Why would this work?</h2>
+        </div>
+        <div className="why-list">
+          <div className="why-row">
+            <h3>Shared, not siloed, support functions</h3>
+            <div className="why-split">
+              <div className="why-problem">
+                <span className="why-label">The traditional way</span>
+                <p>
+                  Companies build out separate departments — HR, Marketing, IT, Legal, and more —
+                  that aren&apos;t actually part of their core business. Those departments get
+                  poor managers, thin staffing, and rarely see investment, because leadership
+                  doesn&apos;t see them as essential. The cost-to-value ratio stops making sense.
+                </p>
+              </div>
+              <div className="why-fix">
+                <span className="why-label">The TransparentChanges way</span>
+                <p>
+                  That functionality is necessary — just not core to any one venture — so
+                  it&apos;s shared across ventures instead. Shared teams can be staffed and
+                  supported by the best, ROI on employee productivity goes up, and the people
+                  doing the work feel a real sense of purpose and value.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="why-row">
+            <h3>Pay tied to performance, not politics</h3>
+            <div className="why-split">
+              <div className="why-problem">
+                <span className="why-label">The traditional way</span>
+                <p>
+                  Hidden salaries, unpublished promotion criteria, and departmental costs no one
+                  can see push employees toward politics and building alliances instead of doing
+                  what&apos;s actually best for the business.
+                </p>
+              </div>
+              <div className="why-fix">
+                <span className="why-label">The TransparentChanges way</span>
+                <p>
+                  Pay is tied directly to contribution and performance — not relationships with
+                  the people above you. Everyone knows how and why they&apos;re valued and how to
+                  move up, and combined with company-wide profit transparency, people can hold
+                  themselves accountable for where they stand. Less resentment, more clarity,
+                  happier and more productive people.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="why-row">
+            <h3>No reward for empire-building</h3>
+            <div className="why-split">
+              <div className="why-problem">
+                <span className="why-label">The traditional way</span>
+                <p>
+                  Managers are conditioned to see more headcount as more power, so they hire for
+                  size, not efficiency — and often pick agreeable hires over people willing to
+                  push back or think differently.
+                </p>
+              </div>
+              <div className="why-fix">
+                <span className="why-label">The TransparentChanges way</span>
+                <p>
+                  Manager pay is capped as a function of their lowest-paid employee&apos;s salary,
+                  so adding headcount doesn&apos;t grow their own pay. And every department&apos;s
+                  cost-to-ROI is public across the company — no slide deck can oversell a
+                  department when the actual numbers are there for everyone to see.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="why-row">
+            <h3>Everyone gets to drive change — and gets paid for it</h3>
+            <div className="why-split">
+              <div className="why-problem">
+                <span className="why-label">The traditional way</span>
+                <p>
+                  Change is usually left to a handful of executives, while the rest of the
+                  workforce is expected to keep their heads down and stick with the status quo.
+                  That makes businesses slow to adapt — people get comfortable, and suggesting
+                  change feels risky.
+                </p>
+              </div>
+              <div className="why-fix">
+                <span className="why-label">The TransparentChanges way</span>
+                <p>
+                  A dedicated team of entrepreneurial, disruptive thinkers works full-time on
+                  improving every venture, inside and out. And every employee is encouraged to
+                  improve the business themselves — with a real share of the savings or revenue
+                  their idea generates, for an appropriate stretch of its impact.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="why-row">
+            <h3>Recognition goes to the people who did the work</h3>
+            <div className="why-split">
+              <div className="why-problem">
+                <span className="why-label">The traditional way</span>
+                <p>
+                  Managers get celebrated, executives get praised — but the baseline employees who
+                  did most of the actual work rarely get called out by name. That takes a real
+                  toll on morale and self-worth.
+                </p>
+              </div>
+              <div className="why-fix">
+                <span className="why-label">The TransparentChanges way</span>
+                <p>
+                  The people at the baseline get celebrated first when things go well. Managers
+                  and execs get a shout-out, not the majority of the credit — the real
+                  boots-on-the-ground work gets recognized, so people feel the impact of what they
+                  did.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p className="why-tagline">
+          These aren&apos;t revolutionary ideas. They&apos;re fundamental ideas that should have
+          been in place for every company from the beginning.
+        </p>
+      </section>
+
       <section className="band" style={{ paddingBottom: 0 }}>
         <div className="band-head">
           <h2>Change starts with truth.</h2>

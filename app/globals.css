@@ -261,6 +261,19 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .process-body h3 { font-size: 1.08rem; line-height: 1.32; margin-bottom: 6px; }
 .process-body p { font-size: 0.9rem; color: var(--ink-soft); }
 
+/* why this works */
+.why-list { display: flex; flex-direction: column; gap: 24px; }
+.why-row { border: none; border-radius: 20px; background: var(--bg-raised); padding: 26px 26px 28px; box-shadow: 0 10px 24px rgba(16,40,31,0.1); }
+.why-row h3 { font-size: 1.08rem; margin-bottom: 16px; max-width: 60ch; }
+.why-split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.why-problem, .why-fix { display: flex; flex-direction: column; gap: 6px; }
+.why-label { font-family: var(--font-body); font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.why-problem .why-label { color: var(--ink-faint); }
+.why-fix .why-label { color: var(--accent); }
+.why-row p { font-size: 0.9rem; color: var(--ink-soft); }
+.why-tagline { margin-top: 8px; font-family: var(--font-serif); font-style: italic; font-size: 1.15rem; max-width: 56ch; }
+@media (max-width: 700px) { .why-split { grid-template-columns: 1fr; gap: 14px; } }
+
 /* ledger details */
 .ledger-cat { border: none; border-bottom: 1px dashed var(--rule); }
 .ledger-cat summary { list-style: none; cursor: pointer; position: relative; display: flex; justify-content: space-between; gap: 10px; padding: 14px 0 14px 22px; font-size: 0.96rem; }
