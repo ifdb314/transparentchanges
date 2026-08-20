@@ -17,7 +17,7 @@ const TYPE_LABELS: Record<PledgeType, string> = {
 
 export function PledgeForm() {
   const router = useRouter();
-  const [pledgeType, setPledgeType] = useState<PledgeType>("money");
+  const [pledgeType, setPledgeType] = useState<PledgeType | "">("");
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [email, setEmail] = useState("");
@@ -30,6 +30,7 @@ export function PledgeForm() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (!pledgeType) return;
     setStatus("submitting");
     setErrorMessage("");
 
@@ -68,9 +69,13 @@ export function PledgeForm() {
         <label htmlFor="pledgeType">How would you like to help?</label>
         <select
           id="pledgeType"
+          required
           value={pledgeType}
           onChange={(e) => setPledgeType(e.target.value as PledgeType)}
         >
+          <option value="" disabled>
+            Please choose a way to help
+          </option>
           {(Object.keys(TYPE_LABELS) as PledgeType[]).map((t) => (
             <option key={t} value={t}>
               {TYPE_LABELS[t]}
@@ -79,87 +84,100 @@ export function PledgeForm() {
         </select>
       </div>
 
-      <div className="fc-row-2">
-        <div>
-          <label htmlFor="pledgeName">Your name</label>
-          <input
-            id="pledgeName"
-            required
-            maxLength={200}
-            placeholder="First name, last initial"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+      {pledgeType === "" ? (
+        <div className="fc-note success">
+          We truly need your help… in any way you&apos;re willing to help!
         </div>
-        <div>
-          <label htmlFor="pledgeLocation">State</label>
-          <select
-            id="pledgeLocation"
-            required
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          >
-            <option value="" disabled>
-              Select your state
-            </option>
-            {US_STATES.map((s) => (
-              <option key={s.code} value={s.code}>
-                {s.name}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
+      ) : (
+        <>
+          <div className="fc-row-2">
+            <div>
+              <label htmlFor="pledgeName">Your name</label>
+              <input
+                id="pledgeName"
+                required
+                maxLength={200}
+                placeholder="First name, last initial"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="pledgeLocation">State</label>
+              <select
+                id="pledgeLocation"
+                required
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              >
+                <option value="" disabled>
+                  Select your state
+                </option>
+                {US_STATES.map((s) => (
+                  <option key={s.code} value={s.code}>
+                    {s.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
 
-      <div>
-        <label htmlFor="pledgeEmail">Email address</label>
-        <input
-          id="pledgeEmail"
-          required
-          type="email"
-          maxLength={320}
-          placeholder="you@example.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <p className="privacy-note">
-          We&apos;ll never sell, spam, or share your email — it&apos;s only used to keep you
-          updated on Founding Circle status and important news.
-        </p>
-      </div>
+          <div>
+            <label htmlFor="pledgeEmail">Email address</label>
+            <input
+              id="pledgeEmail"
+              required
+              type="email"
+              maxLength={320}
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <p className="privacy-note">
+              We&apos;ll never sell, spam, or share your email — it&apos;s only used to keep you
+              updated on Founding Circle status and important news.
+            </p>
+          </div>
 
-      {pledgeType === "money" && (
-        <div>
-          <label htmlFor="pledgeAmount">Amount ($5 minimum)</label>
-          <input
-            id="pledgeAmount"
-            required
-            type="number"
-            min={5}
-            step="1"
-            placeholder="$5"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-          />
-        </div>
-      )}
+          {pledgeType === "money" && (
+            <div>
+              <label htmlFor="pledgeAmount">Amount ($5 minimum)</label>
+              <input
+                id="pledgeAmount"
+                required
+                type="number"
+                min={5}
+                step="1"
+                placeholder="$5"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+              />
+            </div>
+          )}
 
-      {needsHelpText && (
-        <div>
-          <label htmlFor="pledgeHelp">How can you help, and what can you do?</label>
-          <textarea
-            id="pledgeHelp"
-            required
-            placeholder="Tell us your skills, trade, or the role you're picturing."
-            value={helpText}
-            onChange={(e) => setHelpText(e.target.value)}
-          />
-        </div>
+          {needsHelpText && (
+            <div>
+              <label htmlFor="pledgeHelp">How can you help, and what can you do?</label>
+              <textarea
+                id="pledgeHelp"
+                required
+                placeholder="Tell us your skills, trade, or the role you're picturing."
+                value={helpText}
+                onChange={(e) => setHelpText(e.target.value)}
+              />
+            </div>
+          )}
+        </>
       )}
 
       {status === "error" && <div className="fc-note error">{errorMessage}</div>}
 
-      <button type="submit" className="btn" disabled={status === "submitting"} style={{ justifySelf: "start" }}>
+      <button
+        type="submit"
+        className="btn"
+        disabled={status === "submitting" || pledgeType === ""}
+        style={{ justifySelf: "start" }}
+      >
         {status === "submitting" ? "Joining…" : "Join our Mission"}
       </button>
 
