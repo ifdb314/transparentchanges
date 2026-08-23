@@ -9,7 +9,7 @@ const QUOTES = [
   },
   {
     text: "The best way to predict your future is to create it.",
-    author: "Abraham Lincoln",
+    author: "Peter Drucker",
   },
   {
     text: "The future depends on what you do today.",

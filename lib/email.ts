@@ -30,22 +30,14 @@ export type PledgeSubmission = {
 };
 
 const SOCIAL_LINKS = [
-  { icon: "instagram", label: "Instagram", href: "https://www.instagram.com/" },
-  { icon: "tiktok", label: "TikTok", href: "https://www.tiktok.com/" },
+  { icon: "instagram", label: "Instagram", href: "https://www.instagram.com/transparentchanges/" },
+  { icon: "tiktok", label: "TikTok", href: "https://www.tiktok.com/@transparentchanges" },
   {
     icon: "facebook",
     label: "Facebook",
     href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(SITE_URL)}`,
   },
   { icon: "youtube", label: "YouTube", href: "https://www.youtube.com/" },
-  {
-    icon: "whatsapp",
-    label: "WhatsApp",
-    href: `https://wa.me/?text=${encodeURIComponent(
-      "Check out TransparentChanges — companies that publish their receipts and put people first."
-    )}%20${encodeURIComponent(SITE_URL)}`,
-  },
-  { icon: "snapchat", label: "Snapchat", href: "https://www.snapchat.com/" },
 ];
 
 function escapeHtml(input: string): string {

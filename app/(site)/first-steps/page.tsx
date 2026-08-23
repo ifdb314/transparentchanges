@@ -201,6 +201,31 @@ export default function FirstStepsPage() {
               </div>
             </div>
           </div>
+
+          <div className="why-row">
+            <h3>Fair profit over maximum profit</h3>
+            <div className="why-split">
+              <div className="why-problem">
+                <span className="why-label">The traditional way</span>
+                <p>
+                  Traditional companies try to maximize profit — taking as much from customers as
+                  they possibly can — which often pushes them toward misleading advertising,
+                  confusing pricing, and cutthroat business tactics just to keep shareholders and
+                  executives happy.
+                </p>
+              </div>
+              <div className="why-fix">
+                <span className="why-label">The TransparentChanges way</span>
+                <p>
+                  We believe in a fair profit instead: give up margin to keep the product or
+                  service affordable and give customers real value. Customers save money they can
+                  spend elsewhere — creating more opportunity for other businesses — and
+                  they&apos;re happier and more loyal because they trust you. That&apos;s the
+                  recipe for true growth.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
         <p className="why-tagline">
           These aren&apos;t revolutionary ideas. They&apos;re fundamental ideas that should have
@@ -216,7 +241,10 @@ export default function FirstStepsPage() {
             transparent, making pricing transparent, making profits transparent, so employees,
             customers, and the public know and believe in the company. The biggest piece missing
             from most — if not every — industry today is accounting transparency. So
-            that&apos;s the first thing.
+            that&apos;s the first thing every venture must commit to doing from the beginning.
+          </p>
+          <p>
+            <strong>Example ledger shown below:</strong>
           </p>
         </div>
       </section>

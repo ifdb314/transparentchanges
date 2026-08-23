@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { UpvoteButton } from "@/components/UpvoteButton";
 import { SuggestForm } from "@/components/SuggestForm";
 import { VENTURES } from "@/lib/ventures";
@@ -49,6 +50,15 @@ export default async function VenturesPage() {
           <h2>Vote for what we change next.</h2>
           <p>
             See problem industries people have suggested, or suggest a new one.
+          </p>
+          <p>
+            Once we&apos;ve gathered enough people and resources behind us, the industries with
+            the most votes are what we&apos;ll look to build the right way, first. So after you
+            vote, make sure to help{" "}
+            <Link href="/founding-circle" style={{ color: "var(--accent)" }}>
+              support the mission
+            </Link>{" "}
+            — that&apos;s what actually brings these ventures to life.
           </p>
         </div>
         <div className="vote-grid-site">

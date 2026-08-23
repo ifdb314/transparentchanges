@@ -223,12 +223,13 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* truth feed */
 .truth-grid-site { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 16px; }
-.tcard { border: none; border-radius: 20px; background: var(--bg-raised); padding: 24px 22px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 10px 24px rgba(16,40,31,0.10); }
+.tcard { border: none; border-radius: 20px; background: var(--bg-raised); padding: 24px 22px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 10px 24px rgba(16,40,31,0.10); scroll-margin-top: 90px; }
 .tcard .icon { width: 22px; height: 22px; color: var(--ink-faint); }
 .tcard .tstat { font-family: var(--font-display); font-weight: 800; font-size: 2.1rem; font-variant-numeric: tabular-nums; }
 .tcard .tbody { font-size: 0.9rem; flex-grow: 1; }
 .tcard .tsrc { font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.03em; opacity: 0.75; }
 .tcard .tshare { font-family: var(--font-body); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--accent); }
+.tshare-btn { background: none; border: none; padding: 0; margin: 0; cursor: pointer; text-align: left; }
 .tcard.tc-1 { background: var(--forest); color: #fff; }
 .tcard.tc-1 .tbody { color: rgba(255,255,255,0.85); }
 .tcard.tc-1 .tsrc { color: rgba(255,255,255,0.6); }
