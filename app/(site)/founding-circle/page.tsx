@@ -1,5 +1,7 @@
 import { PledgeForm } from "@/components/PledgeForm";
 import { FoundingCircleDisplay } from "@/components/FoundingCircleDisplay";
+import { PledgeTypeProvider } from "@/components/PledgeTypeContext";
+import { NoPaymentBadge } from "@/components/NoPaymentBadge";
 import { getFoundingCircleData } from "@/lib/foundingCircle";
 import { pageMetadata } from "@/lib/seo";
 
@@ -37,24 +39,26 @@ export default async function FoundingCirclePage() {
         </div>
       </div>
 
-      <section className="band">
-        <div className="band-head">
-          <div className="band-eyebrow">No card required</div>
-          <h2>Help in any way you wish.</h2>
-          <small>
-            It takes people, experience, money, support from the community, and more to make each
-            company a success.
-          </small>
-        </div>
-        <div className="fc-grid">
-          <PledgeForm />
-          <FoundingCircleDisplay
-            totalPeople={data.totalPeople}
-            totalMoneyCents={data.totalMoneyCents}
-            recent={data.recent}
-          />
-        </div>
-      </section>
+      <PledgeTypeProvider>
+        <section className="band">
+          <div className="band-head">
+            <NoPaymentBadge />
+            <h2>Help in any way you wish.</h2>
+            <small>
+              It takes people, experience, money, support from the community, and more to make
+              each company a success.
+            </small>
+          </div>
+          <div className="fc-grid">
+            <PledgeForm />
+            <FoundingCircleDisplay
+              totalPeople={data.totalPeople}
+              totalMoneyCents={data.totalMoneyCents}
+              recent={data.recent}
+            />
+          </div>
+        </section>
+      </PledgeTypeProvider>
     </>
   );
 }

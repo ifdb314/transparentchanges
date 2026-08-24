@@ -4,9 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { trackFoundingCirclePledge } from "@/components/Analytics";
 import { ShareWidget } from "@/components/ShareWidget";
+import { usePledgeType, type PledgeType } from "@/components/PledgeTypeContext";
 import { US_STATES } from "@/lib/usStates";
-
-type PledgeType = "money" | "word" | "volunteer" | "employee";
 
 const TYPE_LABELS: Record<PledgeType, string> = {
   money: "Pledge money",
@@ -17,7 +16,7 @@ const TYPE_LABELS: Record<PledgeType, string> = {
 
 export function PledgeForm() {
   const router = useRouter();
-  const [pledgeType, setPledgeType] = useState<PledgeType | "">("");
+  const { pledgeType, setPledgeType } = usePledgeType();
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [email, setEmail] = useState("");
