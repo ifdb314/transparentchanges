@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
+import { ShareCardButton } from "@/components/ShareCardButton";
 
 export const metadata = pageMetadata({
   title: "Ideal Company",
@@ -11,50 +12,62 @@ export const metadata = pageMetadata({
 
 const TENETS = [
   {
+    id: "life-first",
     title: "Built around a real life, not just a job",
     body: "Remote-first wherever the work allows it, a 30–32 hour week, and three real days for family — so people aren't just working to live, they're living. Life first motto.",
   },
   {
+    id: "job-security",
     title: "Job security you can actually feel",
     body: "Loyalty goes both ways. The quiet fear of losing your job for no good reason is something we're actively trying to eliminate — and coworkers stay because they share the same purpose, not just a paycheck.",
   },
   {
+    id: "no-layoffs",
     title: "100% of employees doing 100% of the work",
     body: "Layoffs are avoided by design — not 20% of employees carrying the other 80%, and never leadership bonuses funded by headcount cuts.",
   },
   {
+    id: "making-a-difference",
     title: "Making a difference",
     body: "Every company has a mission to make a real difference — bettering the world in some way, not just making money or turning a profit. Every venture exists to build a better, more sustainable future. Period.",
   },
   {
+    id: "leaders-work-alongside",
     title: "Leaders work alongside their people",
     body: "Real servant leadership means managers get their hands dirty next to their employees, not just pushing paper from above.",
   },
   {
+    id: "profit-builds-next-thing",
     title: "Profit that builds the next thing",
     body: "Profit flows back into the community — ideally into starting the next venture that creates opportunities for people, not just into a buyback.",
   },
   {
+    id: "good-customers-cherished",
     title: "Good customers are cherished",
     body: "Customers get the benefit of the doubt — but the ones who abuse, steal, or cheat are let go. Neither other customers nor employees should pay for bad customer behavior or actions.",
   },
   {
+    id: "hired-on-merit",
     title: "Hired on merit. Full stop.",
     body: "The most qualified person gets the job — not the one who fits a quota. Everyone is equal, and hard work, honesty and sincerity beat politics and favoritism, every time.",
   },
   {
+    id: "bad-managers-not-protected",
     title: "Bad managers don't get protected",
     body: "When a hire isn't working out, or a manager plays favorites instead of leading, they're held accountable — they yield to the consequences of their actions. Titles are never a shield.",
   },
   {
+    id: "tech-adds-not-replaces",
     title: "Technology that adds, not replaces",
     body: "AI is used to help people do more — not as an excuse to replace the person already doing the job. Human lives depend on their living — that must never be forgotten.",
   },
   {
+    id: "fair-prices-real-quality",
     title: "Fair prices, real quality",
     body: "A product or service priced fairly and as low as it can honestly go — without cutting the quality or service customers deserve. We show customers what it costs us, what they're paying, and where the difference is going.",
   },
   {
+    id: "employees-are-family",
     title: "Employees are family, and everyone's in the know",
     body: "Every employee is cared for like family, not a line item — and employees and the public alike know what the company is doing and how it's doing.",
   },
@@ -93,11 +106,11 @@ export default function IdealCompanyPage() {
       <section className="band">
         <div className="tenet-grid">
           {TENETS.map((t, i) => (
-            <div className="tenet-card" key={t.title}>
+            <div className="tenet-card" id={t.id} key={t.id}>
               <div className="tenet-num">{String(i + 1).padStart(2, "0")}</div>
               <h3>{t.title}</h3>
               <p>{t.body}</p>
-              <div className="tshare">Share this ↗</div>
+              <ShareCardButton anchor={t.id} />
             </div>
           ))}
         </div>
