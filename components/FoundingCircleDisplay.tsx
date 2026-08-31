@@ -89,7 +89,7 @@ export function FoundingCircleDisplay({
         <p style={{ marginTop: 12, fontSize: "0.82rem" }}>No pledges yet — be the first.</p>
       )}
       <p style={{ marginTop: 14, fontSize: "0.82rem" }}>
-        Every point is the same size, no matter the person chose to help. Placed at the
+        Every point is the same size, no matter how the person chose to help. Placed at the
         helper&apos;s state, with a small offset so nearby names don&apos;t overlap.
       </p>
     </div>
