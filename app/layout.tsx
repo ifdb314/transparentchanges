@@ -41,7 +41,10 @@ const jsonLd = {
       url: siteUrl,
       description:
         "We're building companies that publish their receipts and put employees and customers first — one industry at a time.",
-      sameAs: [],
+      sameAs: [
+        "https://www.instagram.com/transparentchanges/",
+        "https://www.tiktok.com/@transparentchanges",
+      ],
     },
     {
       "@type": "WebSite",
