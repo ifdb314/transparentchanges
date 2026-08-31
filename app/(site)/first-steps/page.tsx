@@ -47,7 +47,19 @@ export default function FirstStepsPage() {
           <div className="process-step">
             <div className="process-num">3</div>
             <div className="process-body">
-              <h3>Start the venture with the right team, the right people, the right way — from the ground up, following the Ideal Company playbook.</h3>
+              <h3>
+                Start the venture with the right team, the right people, the right way — from the
+                ground up, following the{" "}
+                <Link
+                  href="/ideal-company"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "var(--accent)", textDecoration: "underline" }}
+                >
+                  Ideal Company
+                </Link>{" "}
+                playbook.
+              </h3>
               <p>Take the hardest step: making the effort against an industry set in old ways.</p>
             </div>
           </div>

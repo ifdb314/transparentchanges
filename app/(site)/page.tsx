@@ -52,8 +52,8 @@ export default async function HomePage() {
               <Link href="/founding-circle" className="btn">
                 Join our Mission
               </Link>
-              <Link href="/founding-circle" className="btn ghost">
-                See how you can help →
+              <Link href="/first-steps" className="btn ghost">
+                See what&apos;s next →
               </Link>
             </div>
             <div className="hero-stats">
@@ -105,6 +105,9 @@ export default async function HomePage() {
         <div className="hero-cta-row" style={{ marginTop: 22 }}>
           <Link href="/founding-circle" className="btn">
             Join our Mission
+          </Link>
+          <Link href="/first-steps" className="btn ghost">
+            See what&apos;s next →
           </Link>
         </div>
       </section>
