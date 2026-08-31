@@ -14,6 +14,15 @@ const TYPE_LABELS: Record<PledgeType, string> = {
   employee: "Offer to be an employee",
 };
 
+const TYPE_BLURBS: Partial<Record<PledgeType, string>> = {
+  money:
+    "It's not a commitment — it's just letting us know you might be willing to help us fund something that interests you.",
+  volunteer:
+    "If a venture is started that you're a good fit for, we'll reach out to see if you're interested in helping.",
+  employee:
+    "If a venture is started that you're a good fit for, we'll reach out for an interview/job.",
+};
+
 export function PledgeForm() {
   const router = useRouter();
   const { pledgeType, setPledgeType } = usePledgeType();
@@ -89,6 +98,10 @@ export function PledgeForm() {
         </div>
       ) : (
         <>
+          {TYPE_BLURBS[pledgeType] && (
+            <div className="fc-note success">{TYPE_BLURBS[pledgeType]}</div>
+          )}
+
           <div className="fc-row-2">
             <div>
               <label htmlFor="pledgeName">Your name</label>
