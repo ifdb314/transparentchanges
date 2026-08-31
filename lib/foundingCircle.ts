@@ -17,18 +17,19 @@ export type FoundingCircleData = {
 /** Reveal rule: below $25,000 pledged, only the headcount is public. */
 export const REVEAL_THRESHOLD_CENTS = 2500000;
 
+const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5));
+
 /**
- * Deterministic small pixel offset derived from a row's id, so a marker is stable across
- * renders but multiple pledges from the same state don't all stack on the exact centroid.
+ * Offsets for `count` markers sharing one state centroid, spiraling outward (Vogel/sunflower
+ * packing) so spacing between any two markers strictly grows with count — unlike a random
+ * per-id jitter, two markers can never land close enough to hide one another.
  */
-export function jitterFromId(id: string, radius = 16): { dx: number; dy: number } {
-  let hash = 0;
-  for (let i = 0; i < id.length; i++) {
-    hash = (hash * 31 + id.charCodeAt(i)) >>> 0;
-  }
-  const angle = (hash % 360) * (Math.PI / 180);
-  const dist = ((hash >> 8) % 100) / 100 * radius;
-  return { dx: Math.cos(angle) * dist, dy: Math.sin(angle) * dist };
+export function stateMarkerOffsets(count: number, spacing = 13): { dx: number; dy: number }[] {
+  return Array.from({ length: count }, (_, i) => {
+    const angle = i * GOLDEN_ANGLE;
+    const dist = spacing * Math.sqrt(i);
+    return { dx: Math.cos(angle) * dist, dy: Math.sin(angle) * dist };
+  });
 }
 
 const AVATAR_COLORS = [

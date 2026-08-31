@@ -5,7 +5,7 @@ import { feature } from "topojson-client";
 import type { Topology, GeometryCollection } from "topojson-specification";
 import usTopology from "us-atlas/states-albers-10m.json";
 import { FIPS_TO_USPS } from "@/lib/usStatesFips";
-import { jitterFromId, REVEAL_THRESHOLD_CENTS, type PledgeRow } from "@/lib/foundingCircle";
+import { stateMarkerOffsets, REVEAL_THRESHOLD_CENTS, type PledgeRow } from "@/lib/foundingCircle";
 
 // All of this is static, published geographic data — computed once at module load rather
 // than per-render, and shared by every instance of the component.
@@ -42,6 +42,18 @@ export function FoundingCircleDisplay({
     maximumFractionDigits: 0,
   });
 
+  const offsetById = new Map<string, { dx: number; dy: number }>();
+  const byState = new Map<string, PledgeRow[]>();
+  for (const entry of recent) {
+    const code = entry.location.trim().toUpperCase();
+    if (!byState.has(code)) byState.set(code, []);
+    byState.get(code)!.push(entry);
+  }
+  for (const group of byState.values()) {
+    const offsets = stateMarkerOffsets(group.length);
+    group.forEach((entry, i) => offsetById.set(entry.id, offsets[i]));
+  }
+
   return (
     <div>
       <div className="counter-line">
@@ -70,7 +82,7 @@ export function FoundingCircleDisplay({
           const code = entry.location.trim().toUpperCase();
           const centroid = US_STATE_CENTROIDS[code];
           if (!centroid) return null;
-          const { dx, dy } = jitterFromId(entry.id);
+          const { dx, dy } = offsetById.get(entry.id) || { dx: 0, dy: 0 };
           const [cx, cy] = centroid;
           const leftPct = ((cx + dx + 70) / 1040) * 100;
           const topPct = ((cy + dy + 5) / 625) * 100;
