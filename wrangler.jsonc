@@ -11,5 +11,8 @@
   "routes": [
     { "pattern": "transparentchanges.com", "custom_domain": true },
     { "pattern": "www.transparentchanges.com", "custom_domain": true }
-  ]
+  ],
+  "limits": {
+    "cpu_ms": 30000
+  }
 }
