@@ -116,7 +116,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 860px) { .photo-hero-inner { grid-template-columns: 1fr; } .photo-hero { padding: 48px 20px; } }
 .photo-hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.03; margin-top: 16px; max-width: 16ch; color: #FFF9F0; }
 .photo-hero .hero-lede { font-size: 1.06rem; max-width: 46ch; margin-top: 18px; color: rgba(255,249,240,0.9); }
-.photo-hero .hero-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+.hero-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
 .photo-hero .btn { background: var(--accent); color: #fff; }
 .photo-hero .btn.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.7); }
 .photo-hero .hero-stats { display: flex; gap: 26px; flex-wrap: wrap; margin-top: 28px; padding-top: 20px; border-top: 1px dashed rgba(255,249,240,0.3); }
